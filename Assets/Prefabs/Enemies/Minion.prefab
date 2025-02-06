@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2473328521567671306}
   - component: {fileID: 5236734677884548029}
   - component: {fileID: 619016962174957561}
-  - component: {fileID: 1158103580675373686}
   - component: {fileID: 3089596488822245369}
+  - component: {fileID: 1158103580675373686}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Untagged
@@ -126,18 +126,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1158103580675373686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5441725879769814380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b7596e4ffaf48e5b5d6d85b56c3b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &3089596488822245369
 Rigidbody2D:
   serializedVersion: 5
@@ -165,3 +153,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1158103580675373686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441725879769814380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b7596e4ffaf48e5b5d6d85b56c3b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

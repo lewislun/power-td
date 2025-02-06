@@ -6,6 +6,8 @@ public enum TargetPriority {
     Closest,
     Furthest,
     Random,
+    // LowestHealth,
+    // HighestHealth,
 }
 
 public enum TargetSwitchStrategy {
