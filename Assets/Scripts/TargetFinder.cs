@@ -1,25 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
 public enum TargetPriority {
     Closest,
     Furthest,
     Random,
-    First,
-    Last
 }
 
 public enum TargetSwitchStrategy {
-    UntilDeath,
+    UntilLost,
     FocusPriority,
 }
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class TargetFinder : MonoBehaviour
-{
+public class TargetFinder : MonoBehaviour {
+
     [Header("Attributes")]
     [SerializeField]
     private float _range = 1;
@@ -32,7 +28,7 @@ public class TargetFinder : MonoBehaviour
         }
     }
     public TargetPriority targetPriority = TargetPriority.Closest;
-    public TargetSwitchStrategy targetSwitchStrategy = TargetSwitchStrategy.UntilDeath;
+    public TargetSwitchStrategy targetSwitchStrategy = TargetSwitchStrategy.UntilLost;
 
     [Header("Information")]
     [SerializeField] private Transform currentTarget;
@@ -49,7 +45,9 @@ public class TargetFinder : MonoBehaviour
         Component component = trigger.GetComponent(targetType);
         if (component) {
             availableTargets.Add(component.transform);
-            // TODO: switch target
+            if (currentTarget == null) {
+                SwitchTarget();
+            }
         }
     }
 
@@ -57,16 +55,63 @@ public class TargetFinder : MonoBehaviour
         Component component = trigger.GetComponent(targetType);
         if (component) {
             availableTargets.Remove(component.transform);
-            // TODO: switch target
+            if (currentTarget == component.transform) {
+                SwitchTarget();
+            }
         }
     }
 
-    private void UpdateCurrentTarget() {
-
+    private void SwitchTarget() {
+        currentTarget = targetPriority switch {
+            TargetPriority.Closest => GetClosestTarget(),
+            TargetPriority.Furthest => GetFurthestTarget(),
+            TargetPriority.Random => GetRandomTarget(),
+            _ => GetClosestTarget(),
+        };
     }
 
-    private void Start()
-    {
-        // Debug.Log("TargetFinder started");
+    private Transform GetClosestTarget() {
+        Transform closestTarget = null;
+        float closestDistance = float.MaxValue;
+        foreach (Transform target in availableTargets) {
+            if (closestTarget == null) {
+                closestTarget = target;
+                continue;
+            }
+
+            if (Vector2.Distance(transform.position, target.position) < closestDistance) {
+                closestTarget = target;
+            }
+        }
+
+        return closestTarget;
+    }
+
+    private Transform GetFurthestTarget() {
+        Transform furthestTarget = null;
+        float furthestDistance = float.MinValue;
+        foreach (Transform target in availableTargets) {
+            if (furthestTarget == null) {
+                furthestTarget = target;
+                continue;
+            }
+
+            if (Vector2.Distance(transform.position, target.position) > furthestDistance) {
+                furthestTarget = target;
+            }
+        }
+
+        return furthestTarget;
+    }
+
+    private Transform GetRandomTarget() {
+        int randomIndex = UnityEngine.Random.Range(0, availableTargets.Count);
+        return new List<Transform>(availableTargets)[randomIndex];
+    }
+
+    private void Update() {
+        if (targetSwitchStrategy == TargetSwitchStrategy.FocusPriority) {
+            SwitchTarget();
+        }
     }
 }
