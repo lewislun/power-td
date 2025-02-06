@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Events;
 
 public enum TargetPriority {
     Closest,
@@ -32,8 +33,12 @@ public class TargetFinder : MonoBehaviour {
     public TargetPriority targetPriority = TargetPriority.Closest;
     public TargetSwitchStrategy targetSwitchStrategy = TargetSwitchStrategy.UntilLost;
 
+    [Header("Events")]
+    public UnityEvent OnTargetChanged;
+
     [Header("Information")]
-    [SerializeField] private Transform currentTarget;
+    [field:SerializeField] public Transform CurrentTarget { get; private set; }
+
 
     private HashSet<Transform> availableTargets = new();
     private readonly Type targetType = typeof(Enemy);
@@ -47,7 +52,7 @@ public class TargetFinder : MonoBehaviour {
         Component component = trigger.GetComponent(targetType);
         if (component) {
             availableTargets.Add(component.transform);
-            if (currentTarget == null) {
+            if (CurrentTarget == null) {
                 SwitchTarget();
             }
         }
@@ -57,19 +62,23 @@ public class TargetFinder : MonoBehaviour {
         Component component = trigger.GetComponent(targetType);
         if (component) {
             availableTargets.Remove(component.transform);
-            if (currentTarget == component.transform) {
+            if (CurrentTarget == component.transform) {
                 SwitchTarget();
             }
         }
     }
 
     private void SwitchTarget() {
-        currentTarget = targetPriority switch {
+        Transform prevTarget = CurrentTarget;
+        CurrentTarget = targetPriority switch {
             TargetPriority.Closest => GetClosestTarget(),
             TargetPriority.Furthest => GetFurthestTarget(),
             TargetPriority.Random => GetRandomTarget(),
             _ => GetClosestTarget(),
         };
+        if (prevTarget != CurrentTarget) {
+            OnTargetChanged.Invoke();
+        }
     }
 
     private Transform GetClosestTarget() {
