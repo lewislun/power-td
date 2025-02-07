@@ -10,9 +10,8 @@ public class PathNavigator : MonoBehaviour {
     [Header("Events")]
     public UnityEvent OnReachedDestination;
 
-    [Header("Debug")]
-    [ReadOnly] public ITile NextTile;
-    [ReadOnly] public Vector3 NextPos;
+    public ITile NextTile { get; private set; }
+    public Vector3 NextPos { get; private set; }
 
     public void SetNextTile(ITile tile) {
         NextTile = tile;

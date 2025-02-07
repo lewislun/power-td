@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BuildableTile : MonoBehaviour, ITile {
 
-    public bool IsPassable { get => tower == null; }
+    public bool IsPassable { get => tower == null; } // TODO: check if building is passable (trap)
     public bool IsBuildable { get => tower == null; }
 
     private Tower tower;

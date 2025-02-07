@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(TargetFinder))]
-public class ProjectileShooter : MonoBehaviour {
+public class ProjectileShooter : MonoBehaviour, IPausable {
     
     [Header("References")]
     public GameObject ProjectilePrefab;
@@ -11,8 +11,12 @@ public class ProjectileShooter : MonoBehaviour {
 
     [Header("Information")]
     [SerializeField] private float timeSinceLastShot = 0f;
-    
+    [field: SerializeField] public bool IsPaused { get; private set; }
+
     private TargetFinder targetFinder;
+
+    public void Pause() => IsPaused = true;
+    public void Unpause() => IsPaused = false;
 
     private void Start() {
         targetFinder = GetComponent<TargetFinder>();
@@ -38,6 +42,10 @@ public class ProjectileShooter : MonoBehaviour {
     }
 
     private void Update() {
+        if (IsPaused) {
+            return;
+        }
+
         timeSinceLastShot += Time.deltaTime;
         if (timeSinceLastShot >= 1 / ProjectilePerSec) {
             // TODO: check if rotation is done yet

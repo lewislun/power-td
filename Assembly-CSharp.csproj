@@ -66,7 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/ProjectileShooter.cs" />
+    <Compile Include="Assets/Scripts/DragAndBuild.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthBar.cs" />
+    <Compile Include="Assets/Scripts/Interfaces/IPausable.cs" />
     <Compile Include="Assets/Scripts/Tiles/BuildableTile.cs" />
     <Compile Include="Assets/Scripts/Tiles/DestinationTile.cs" />
     <Compile Include="Assets/Scripts/Interfaces/ITile.cs" />
