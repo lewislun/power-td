@@ -36,11 +36,11 @@ public class PathFinder : MonoBehaviour {
     }
 
     private void Start() {
-        UpdateNodes();
+        UpdateTiles();
         UpdatePaths();
     }
 
-    private void UpdateNodes() {
+    public void UpdateTiles() {
         ITile[] allTiles = TileParent.GetComponentsInChildren<ITile>();
         Debug.Log(allTiles.Length + " tiles found");
         HashSet<float> xSet = new();
@@ -85,7 +85,8 @@ public class PathFinder : MonoBehaviour {
         }
     }
 
-    private void UpdatePaths() {
+    public void UpdatePaths() {
+        ClearPaths();
         Queue<PathNode> queue = new();
         HashSet<PathNode> visitedSet = new();
         foreach (var node in destinationNodes) {
@@ -127,6 +128,13 @@ public class PathFinder : MonoBehaviour {
                 queue.Enqueue(nextNode);
                 visitedSet.Add(nextNode);
             }
+        }
+    }
+
+    private void ClearPaths() {
+        foreach (PathNode node in nodeByTile.Values) {
+            node.Next = null;
+            node.Destination = null;
         }
     }
 }

@@ -2,17 +2,24 @@ using UnityEngine;
 
 public class BuildableTile : MonoBehaviour, ITile {
 
-    public bool IsPassable { get => tower == null; } // TODO: check if building is passable (trap)
-    public bool IsBuildable { get => tower == null; }
+    public bool IsPassable { get => building == null; } // TODO: check if building is passable (trap)
+    public bool IsBuildable { get => building == null; }
 
-    private Tower tower;
+    private Building building;
 
-    public void Build(Tower tower) {
-        if (this.tower != null) {
+    public bool Build(Building building) {
+        // TODO: check currency
+
+        if (this.building != null) {
             Debug.LogError("Already built");
-            return;
+            return false;
+        } else if (!building.BuildAt(this)) {
+            return false;
         }
 
-        this.tower = tower;
+        this.building = building;
+
+        PathFinder.Instance.UpdatePaths();
+        return true;
     }
 }

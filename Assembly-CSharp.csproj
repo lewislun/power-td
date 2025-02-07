@@ -70,6 +70,7 @@
     <Compile Include="Assets/Scripts/Enemies/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IPausable.cs" />
     <Compile Include="Assets/Scripts/Tiles/BuildableTile.cs" />
+    <Compile Include="Assets/Scripts/Building.cs" />
     <Compile Include="Assets/Scripts/Tiles/DestinationTile.cs" />
     <Compile Include="Assets/Scripts/Interfaces/ITile.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthMeter.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Assets/Scripts/Enemies/Enemy.cs" />
     <Compile Include="Assets/Scripts/Meter.cs" />
     <Compile Include="Assets/Scripts/CounterParentRotation.cs" />
-    <Compile Include="Assets/Scripts/Tower.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
   </ItemGroup>

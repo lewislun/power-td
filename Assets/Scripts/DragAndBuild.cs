@@ -7,12 +7,22 @@ public class DragAndBuild : MonoBehaviour {
     public GameObject BuildingPrefab;
     public GameObject BuildingParent;
 
-    private GameObject currentBuilding;
+    private Building currentBuilding;
 
     static private Vector3 PointerPosToWorldPos(PointerEventData pointerEventData) {
         Vector3 pos = Camera.main.ScreenToWorldPoint(pointerEventData.position);
         pos.z = 0;
         return pos;
+    }
+
+    static private BuildableTile GetBuildableTile(Vector3 position) {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(position, Vector2.zero);
+        foreach (RaycastHit2D hit in hits) {
+            if (hit.collider.TryGetComponent<BuildableTile>(out var tile)) {
+                return tile;
+            }
+        }
+        return null;
     }
 
     private void Awake() {
@@ -22,14 +32,14 @@ public class DragAndBuild : MonoBehaviour {
     }
 
     public void BeginDragHandler(BaseEventData eventData) {
-        if (BuildingPrefab == null) {
-            Debug.LogError("BuildingPrefab is null");
+        if (BuildingPrefab == null || BuildingPrefab.GetComponent<Building>() == null) {
+            Debug.LogError("BuildingPrefab is null or is not a Building");
             return;
         }
 
         Vector3 position = PointerPosToWorldPos((PointerEventData)eventData);
-        currentBuilding = Instantiate(BuildingPrefab, position, Quaternion.identity, BuildingParent.transform);
-        Pausable.Pause(currentBuilding);
+        GameObject building = Instantiate(BuildingPrefab, position, Quaternion.identity, BuildingParent.transform);
+        currentBuilding = building.GetComponent<Building>();
     }
 
     public void DragHandler(BaseEventData eventData) {
@@ -38,6 +48,11 @@ public class DragAndBuild : MonoBehaviour {
         }
 
         Vector3 position = PointerPosToWorldPos((PointerEventData)eventData);
+        BuildableTile tile = GetBuildableTile(position);
+        if (tile && currentBuilding.IsBuildableAt(tile)) {
+            position = tile.transform.position;
+        }
+
         currentBuilding.transform.position = position;
     }
 
@@ -45,9 +60,14 @@ public class DragAndBuild : MonoBehaviour {
         if (currentBuilding == null) {
             return;
         }
-        Pausable.Unpause(currentBuilding);
+
+        Vector3 position = PointerPosToWorldPos((PointerEventData)eventData);
+        BuildableTile tile = GetBuildableTile(position);
+        if (!tile || !currentBuilding.IsBuildableAt(tile) || !tile.Build(currentBuilding)) {
+            Debug.Log("Cannot build here");
+            Destroy(currentBuilding.gameObject);
+        }
+
         currentBuilding = null;
-        // TODO: assign building to tile
-        // TODO: check currency
     }
 }
