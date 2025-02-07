@@ -74,6 +74,7 @@
     <Compile Include="Assets/Scripts/Interfaces/IDamagable.cs" />
     <Compile Include="Assets/Scripts/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Meter.cs" />
+    <Compile Include="Assets/Scripts/CounterParentRotation.cs" />
     <Compile Include="Assets/Scripts/Tower.cs" />
   </ItemGroup>
   <ItemGroup>
