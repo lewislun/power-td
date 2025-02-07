@@ -66,16 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/ProjectileShooter.cs" />
+    <Compile Include="Assets/Scripts/Interfaces/ITile.cs" />
     <Compile Include="Assets/Scripts/Enemy.cs" />
     <Compile Include="Assets/Scripts/HealthMeter.cs" />
     <Compile Include="Assets/Scripts/ImpactProjectile.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IProjectile.cs" />
     <Compile Include="Assets/Scripts/TargetFinder.cs" />
+    <Compile Include="Assets/Scripts/Attributes/ReadOnly.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IDamagable.cs" />
     <Compile Include="Assets/Scripts/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Meter.cs" />
     <Compile Include="Assets/Scripts/CounterParentRotation.cs" />
     <Compile Include="Assets/Scripts/Tower.cs" />
+    <Compile Include="Assets/Scripts/LevelManager.cs" />
+    <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -58,6 +58,7 @@
     },
     "dotnet.defaultSolution": "power-td.sln",
     "cSpell.words": [
+        "Buildable",
         "Mathf",
         "Rigidbody"
     ]
