@@ -11,13 +11,17 @@ public class Meter : MonoBehaviour {
     [Header("Events")]
     public UnityEvent OnValueZero;
     public UnityEvent OnValueMax;
+    public UnityEvent OnValueChanged;
 
     public void AddDelta(float delta) {
+        if (delta == 0) return;
+
         CurrentValue = Mathf.Clamp(CurrentValue + delta, 0, MaxValue);
         if (CurrentValue == 0) {
             OnValueZero.Invoke();
         } else if (CurrentValue == MaxValue) {
             OnValueMax.Invoke();
         }
+        OnValueChanged.Invoke();
     }
 }
