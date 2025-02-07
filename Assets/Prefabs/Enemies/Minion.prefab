@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 619016962174957561}
   - component: {fileID: 3089596488822245369}
   - component: {fileID: 1158103580675373686}
+  - component: {fileID: 3955844715187721216}
   - component: {fileID: 6415417121907492585}
   - component: {fileID: 8574393702568284605}
+  - component: {fileID: 6860091325452342556}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Untagged
@@ -168,6 +170,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b7596e4ffaf48e5b5d6d85b56c3b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageToBase: 1
+--- !u!114 &3955844715187721216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441725879769814380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b8e8fc8e6d448f096bcaedc8a192db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  OnReachedDestination:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6415417121907492585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +231,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6860091325452342556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5441725879769814380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b8e8fc8e6d448f096bcaedc8a192db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  OnReachedDestination:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5983218651249580546

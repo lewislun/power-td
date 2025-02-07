@@ -24,7 +24,7 @@ public class EnemyBatch {
 public class LevelManager : MonoBehaviour {
 
     [Header("References")]
-    [field:SerializeField] public GameObject EnemyParent { get; set; }
+    public GameObject EnemyParent;
 
     [Header("Attributes")]
     public List<Wave> Waves = new();

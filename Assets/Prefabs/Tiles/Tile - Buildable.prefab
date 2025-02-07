@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3072110022805396504
+--- !u!1001 &7903324062996237209
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,29 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 132664640722064260, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 132664640722064260, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
-      propertyPath: m_Color.b
-      value: 0.3260057
-      objectReference: {fileID: 0}
-    - target: {fileID: 132664640722064260, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
-      propertyPath: m_Color.g
-      value: 0.3260057
-      objectReference: {fileID: 0}
-    - target: {fileID: 132664640722064260, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6226415
-      objectReference: {fileID: 0}
     - target: {fileID: 2821303337554082256, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2821303337554082256, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2821303337554082256, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7664476446425834237, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
       propertyPath: m_Name
-      value: Tile - Spawner
+      value: Tile - Buildable Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74,22 +58,22 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7664476446425834237, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2213677922469585649}
+      addedObject: {fileID: 5421713134809892891}
   m_SourcePrefab: {fileID: 100100000, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
---- !u!1 &4683712215024729829 stripped
+--- !u!1 &572959790733420900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7664476446425834237, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
-  m_PrefabInstance: {fileID: 3072110022805396504}
+  m_PrefabInstance: {fileID: 7903324062996237209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2213677922469585649
+--- !u!114 &5421713134809892891
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4683712215024729829}
+  m_GameObject: {fileID: 572959790733420900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f4fa10476c304418adec4493a0c3bdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 91133492f7ed744f0bb633520c704567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

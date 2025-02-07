@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class SpawnerTile : MonoBehaviour, ITile {
 
-    [Header("Attributes")]
-    [field:SerializeField] public bool IsPassable { get; set; } = true;
-    [field:SerializeField] public bool IsBuildable { get; set; } = false;
+    public bool IsPassable { get => true; }
+    public bool IsBuildable { get => false; }
 
     [Header("Debug")]
     public bool IsSpawning => spawnRoutine != null;
@@ -47,6 +46,8 @@ public class SpawnerTile : MonoBehaviour, ITile {
     }
 
     private GameObject Spawn(GameObject prefab, GameObject parent) {
-        return Instantiate(prefab, transform.position, Quaternion.identity, parent.transform);
+        GameObject enemy = Instantiate(prefab, transform.position, Quaternion.identity, parent.transform);
+        enemy.GetComponent<PathNavigator>().SetNextTile(this);
+        return enemy;
     }
 }
