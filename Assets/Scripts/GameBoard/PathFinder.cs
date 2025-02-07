@@ -111,6 +111,13 @@ public class PathFinder : MonoBehaviour {
                 if (x < 0 || x >= nodes.GetLength(0) || y < 0 || y >= nodes.GetLength(1)) {
                     continue;
                 }
+                // check corners for diagonal movement
+                if (direction[0] != 0 && direction[1] != 0) {
+                    if (nodes[x, node.y] == null || nodes[node.x, y] == null || nodes[x, node.y].Tile.IsPassable == false || nodes[node.x, y].Tile.IsPassable == false) {
+                        continue;
+                    }
+                }
+
                 PathNode nextNode = nodes[x, y];
                 if (nextNode == null || nextNode.Tile.IsPassable == false || visitedSet.Contains(nextNode)) {
                     continue;
