@@ -1,39 +1,30 @@
-using NUnit.Framework;
 using UnityEngine;
 
 public class BuildableTile : MonoBehaviour, ITile {
 
-    public bool IsPassable { get => building == null || building.IsPassable; }
-    public bool IsBuildable { get => building == null; }
+    [Header("Debug")]
+    [field:SerializeField, ReadOnly] public Building Building { get; private set; }
 
-    private Building building;
+    public bool IsPassable { get => Building == null || Building.IsPassable; }
+    public bool IsBuildable { get => Building == null; }
 
-    public bool Build(Building building) {
-        // TODO: check currency
-
-        if (this.building != null) {
+    public bool Place(Building building) {
+        if (Building != null) {
             Debug.LogError("Already built");
             return false;
-        } else if (!building.IsBuildableAt(this)) {
+        }
+
+        Building = building;
+        return true;
+    }
+
+    public bool RemoveBuilding() {
+        if (Building == null) {
+            Debug.LogError("No building to remove");
             return false;
         }
 
-        this.building = building;
-        if (!IsPassable) {
-            PathFinder.Instance.UpdatePaths();
-            if (!PathFinder.Instance.AreDestinationsReachableFromAllSpawners()) {
-                Debug.LogError("Building is blocking paths");
-                this.building = null;
-                PathFinder.Instance.UpdatePaths();
-                return false;
-            }
-        }
-
-        if (!building.BuildAt(this)) {
-            this.building = null;
-            return false;
-        }
-
+        Building = null;
         return true;
     }
 }

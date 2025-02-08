@@ -63,7 +63,7 @@ public class DragAndBuild : MonoBehaviour {
 
         Vector3 position = PointerPosToWorldPos((PointerEventData)eventData);
         BuildableTile tile = GetBuildableTile(position);
-        if (!tile || !currentBuilding.IsBuildableAt(tile) || !tile.Build(currentBuilding)) {
+        if (!tile || !currentBuilding.IsBuildableAt(tile) || !currentBuilding.Build(tile)) {
             Debug.Log("Cannot build here");
             Destroy(currentBuilding.gameObject);
         }
