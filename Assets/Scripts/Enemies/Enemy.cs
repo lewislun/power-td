@@ -8,13 +8,14 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     [Header("Attributes")]
     public float DamageToBase = 1f;
+    public float currencyReward = 10f;
 
     private HealthMeter healthMeter;
     private PathNavigator pathNavigator;
 
     void Start() {
         healthMeter = GetComponent<HealthMeter>();
-        healthMeter.OnValueZero.AddListener(Die);
+        healthMeter.OnValueZero.AddListener(Kill);
         pathNavigator = GetComponent<PathNavigator>();
         pathNavigator.OnReachedDestination.AddListener(OnReachDestination);
     }
@@ -29,6 +30,11 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     public void OnReachDestination() {
         // TODO: GameManager.Instance.TakeDamage(DamageToBase);
+        Die();
+    }
+
+    public void Kill() {
+        CurrencyMeter.Instance.AddDelta(currencyReward);
         Die();
     }
 

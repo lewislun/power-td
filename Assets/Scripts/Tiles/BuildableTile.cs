@@ -1,8 +1,9 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class BuildableTile : MonoBehaviour, ITile {
 
-    public bool IsPassable { get => building == null; } // TODO: check if building is passable (trap)
+    public bool IsPassable { get => building == null || building.IsPassable; }
     public bool IsBuildable { get => building == null; }
 
     private Building building;
@@ -13,13 +14,26 @@ public class BuildableTile : MonoBehaviour, ITile {
         if (this.building != null) {
             Debug.LogError("Already built");
             return false;
-        } else if (!building.BuildAt(this)) {
+        } else if (!building.IsBuildableAt(this)) {
             return false;
         }
 
         this.building = building;
+        if (!IsPassable) {
+            PathFinder.Instance.UpdatePaths();
+            if (!PathFinder.Instance.AreDestinationsReachableFromAllSpawners()) {
+                Debug.LogError("Building is blocking paths");
+                this.building = null;
+                PathFinder.Instance.UpdatePaths();
+                return false;
+            }
+        }
 
-        PathFinder.Instance.UpdatePaths();
+        if (!building.BuildAt(this)) {
+            this.building = null;
+            return false;
+        }
+
         return true;
     }
 }

@@ -3,10 +3,10 @@ using UnityEngine.Events;
 
 public class Meter : MonoBehaviour {
     [Header("Attributes")]
-    public float MaxValue = 100;
+    [field: SerializeField] public virtual float MaxValue { get; protected set; } = 100;
 
     [Header("Information")]
-    [field: SerializeField] public float CurrentValue { get; private set; } = 100;
+    [field: SerializeField] public virtual float CurrentValue { get; protected set; } = 100;
 
     [Header("Events")]
     public UnityEvent OnValueZero;

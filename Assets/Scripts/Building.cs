@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Building : MonoBehaviour {
 
+    [Header("Attributes")]
+    [field:SerializeField] public bool IsPassable { get; private set; } = false;
+
     [Header("Debug")]
     [field:SerializeField, ReadOnly] public BuildableTile Tile { get; private set; }
 
@@ -20,10 +23,6 @@ public class Building : MonoBehaviour {
     public bool BuildAt(BuildableTile tile) {
         if (Tile != null) {
             Debug.LogError("Already built");
-            return false;
-        }
-        if (!IsBuildableAt(tile)) {
-            Debug.LogError($"Cannot place building to this tile: {tile.name}");
             return false;
         }
 

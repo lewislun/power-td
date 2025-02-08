@@ -24,6 +24,30 @@ public class PathFinder : MonoBehaviour {
         return nodeByTile[tile].Next;
     }
 
+    // Check if there is a valid path for all spawners
+    public bool AreDestinationsReachableFromAllSpawners() {
+        foreach (PathNode node in spawnerNodes) {
+            if (node.Destination == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public List<PathNode> GetPath(ITile tile) {
+        List<PathNode> path = new();
+        PathNode node = nodeByTile[tile] ?? throw new System.Exception("Tile does not exist in pathfinder");
+        if (node.Destination == null) {
+            return path;
+        }
+
+        while (node != null) {
+            path.Add(node);
+            node = node.Next;
+        }
+        return path;
+    }
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -36,11 +60,11 @@ public class PathFinder : MonoBehaviour {
     }
 
     private void Start() {
-        UpdateTiles();
+        UpdateNodes();
         UpdatePaths();
     }
 
-    public void UpdateTiles() {
+    public void UpdateNodes() {
         ITile[] allTiles = TileParent.GetComponentsInChildren<ITile>();
         Debug.Log(allTiles.Length + " tiles found");
         HashSet<float> xSet = new();
@@ -133,8 +157,12 @@ public class PathFinder : MonoBehaviour {
 
     private void ClearPaths() {
         foreach (PathNode node in nodeByTile.Values) {
+            if (node.Tile is not DestinationTile) {
+                node.Destination = null;
+            }
             node.Next = null;
-            node.Destination = null;
         }
     }
+
+    // TODO: function to return the path to a previous state (for reverting build)
 }

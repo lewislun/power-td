@@ -36,7 +36,6 @@ public class PathNavigator : MonoBehaviour {
         if (Vector3.Distance(transform.position, NextPos) < 0.05f) {
             PathNode node = PathFinder.Instance.GetNextNode(NextTile);
             if (node == null) {
-                Debug.Log("Reached destination");
                 OnReachedDestination.Invoke();
                 return;
             }

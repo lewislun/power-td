@@ -1187,6 +1187,7 @@ GameObject:
   - component: {fileID: 482525074}
   - component: {fileID: 482525075}
   - component: {fileID: 482525076}
+  - component: {fileID: 482525077}
   m_Layer: 0
   m_Name: Gameboard
   m_TagString: Untagged
@@ -1255,6 +1256,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileParent: {fileID: 326458367}
+--- !u!114 &482525077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482525073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f491bd41073c4546b0401319ad9d484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxValue>k__BackingField: 99999
+  <CurrentValue>k__BackingField: 100
+  OnValueZero:
+    m_PersistentCalls:
+      m_Calls: []
+  OnValueMax:
+    m_PersistentCalls:
+      m_Calls: []
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &515411817
 PrefabInstance:
   m_ObjectHideFlags: 0

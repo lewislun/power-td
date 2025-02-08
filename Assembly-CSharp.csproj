@@ -85,6 +85,7 @@
     <Compile Include="Assets/Scripts/Enemies/Enemy.cs" />
     <Compile Include="Assets/Scripts/Meter.cs" />
     <Compile Include="Assets/Scripts/CounterParentRotation.cs" />
+    <Compile Include="Assets/Scripts/GameBoard/CurrencyMeter.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
   </ItemGroup>
