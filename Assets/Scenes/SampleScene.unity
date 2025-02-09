@@ -1227,7 +1227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e2eec98dee14a718139704946c3ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyParent: {fileID: 0}
+  <TileParent>k__BackingField: {fileID: 326458367}
+  <BuildingParent>k__BackingField: {fileID: 1604607591}
+  <EnemyParent>k__BackingField: {fileID: 2020309492}
+  <ProjectileParent>k__BackingField: {fileID: 1983438621}
   Waves:
   - SpawnInfos:
     - SpawnerTile: {fileID: 1990679642}
@@ -3972,7 +3975,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildingPrefab: {fileID: 5069140156913637792, guid: 3b5c57f66537946eab72801e64ec2707, type: 3}
-  BuildingParent: {fileID: 1604607591}
 --- !u!114 &1627773332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4124,7 +4126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildingPrefab: {fileID: 6891852508546967444, guid: 6dfbe8370cd674e62909f922b2f7eaae, type: 3}
-  BuildingParent: {fileID: 1604607591}
 --- !u!114 &1635596877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,7 +4146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 315eb19d83a7a4da687c87cbf2ec7fd6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
