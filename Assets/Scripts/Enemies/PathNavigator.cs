@@ -18,7 +18,7 @@ public class PathNavigator : MonoBehaviour {
         NextPos = new Vector3(
             NextTile.transform.position.x + Random.Range(-RandomOffset, RandomOffset),
             NextTile.transform.position.y + Random.Range(-RandomOffset, RandomOffset),
-            0
+            transform.parent.position.z
         );
     }
 

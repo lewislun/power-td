@@ -46,7 +46,7 @@ public class SpawnerTile : MonoBehaviour, ITile {
     }
 
     private GameObject Spawn(GameObject prefab, GameObject parent) {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+        Vector3 pos = new(transform.position.x, transform.position.y, parent.transform.position.z);
         GameObject enemy = Instantiate(prefab, pos, Quaternion.identity, parent.transform);
         enemy.GetComponent<PathNavigator>().SetNextTile(this);
         return enemy;
