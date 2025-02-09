@@ -130,6 +130,9 @@ public class PathFinder : MonoBehaviour {
         };
         while (queue.Count > 0) {
             PathNode node = queue.Dequeue();
+            if (node.Tile.IsPassable == false) {
+                continue;
+            }
             foreach (int[] direction in directions) {
                 int x = node.x + direction[0];
                 int y = node.y + direction[1];
@@ -144,7 +147,7 @@ public class PathFinder : MonoBehaviour {
                 }
 
                 PathNode nextNode = nodes[x, y];
-                if (nextNode == null || nextNode.Tile.IsPassable == false || visitedSet.Contains(nextNode)) {
+                if (nextNode == null || visitedSet.Contains(nextNode)) {
                     continue;
                 }
                 nextNode.Destination = node.Destination;
