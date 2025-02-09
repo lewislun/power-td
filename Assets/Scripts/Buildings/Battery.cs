@@ -11,10 +11,10 @@ public class Battery : MonoBehaviour, IPausable {
     public void Pause() => IsPaused = true;
     public void Unpause() => IsPaused = false;
 
-    private int capacityId = -1;
+    private int modifierId = -1;
 
     private void Update() {
-        if (capacityId != -1 || IsPaused) {
+        if (modifierId != -1 || IsPaused) {
             return;
         }
 
@@ -27,13 +27,16 @@ public class Battery : MonoBehaviour, IPausable {
     }
 
     private void UpdateCapacity() {
-        RemoveCapacity();
-        capacityId = EnergyMeter.Instance.AddCapacity(EnergyCapacity.Value);
+        if (modifierId != -1) {
+            EnergyMeter.Instance.MaxValue.EditModifier(modifierId, EnergyCapacity.Value);
+        } else {
+            modifierId = EnergyMeter.Instance.MaxValue.AddAdditiveModifier(EnergyCapacity.Value);
+        }
     }
 
     private void RemoveCapacity() {
-        if (capacityId != -1) {
-            EnergyMeter.Instance.RemoveCapacity(capacityId);
+        if (modifierId != -1) {
+            EnergyMeter.Instance.MaxValue.RemoveModifier(modifierId);
         }
     }
 }

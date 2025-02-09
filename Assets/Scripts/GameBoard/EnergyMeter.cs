@@ -10,12 +10,4 @@ public class EnergyMeter : Meter {
             Debug.LogError("Multiple EnergyMeter instances");
         }
     }
-
-    public int AddCapacity(float amount) {
-        return MaxValue.AddAdditiveModifier(amount);
-    }
-
-    public void RemoveCapacity(int id) {
-        MaxValue.RemoveModifier(id);
-    }
 }

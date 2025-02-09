@@ -61,6 +61,13 @@ public class ModifiableFloat {
         return id;
     }
 
+    public int AddMultiplicativeModifier(float modifier) {
+        int id = nextModifierId++;
+        MultiplicativeModifiers[id] = modifier;
+        UpdateValue();
+        return id;
+    }
+
     public void RemoveModifier(int id) {
         if (!AdditiveModifiers.Remove(id) && !MultiplicativeModifiers.Remove(id)) {
             Debug.LogError("Modifier not found");
@@ -69,5 +76,16 @@ public class ModifiableFloat {
         UpdateValue();
     }
 
-
+    public bool EditModifier(int id, float modifier) {
+        if (AdditiveModifiers.ContainsKey(id)) {
+            AdditiveModifiers[id] = modifier;
+        } else if (MultiplicativeModifiers.ContainsKey(id)) {
+            MultiplicativeModifiers[id] = modifier;
+        } else {
+            Debug.LogError("Modifier not found");
+            return false;
+        }
+        UpdateValue();
+        return true;
+    }
 }
