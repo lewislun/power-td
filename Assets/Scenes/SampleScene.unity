@@ -1187,6 +1187,7 @@ GameObject:
   - component: {fileID: 482525074}
   - component: {fileID: 482525075}
   - component: {fileID: 482525076}
+  - component: {fileID: 482525078}
   - component: {fileID: 482525077}
   m_Layer: 0
   m_Name: Gameboard
@@ -1265,11 +1266,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 482525073}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16c0ac7c744044ad8383c60f18406df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxValue>k__BackingField:
+    <Base>k__BackingField: 100
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 999999
+    <Value>k__BackingField: 100
+  <CurrentValue>k__BackingField: 0
+  OnValueZero:
+    m_PersistentCalls:
+      m_Calls: []
+  OnValueMax:
+    m_PersistentCalls:
+      m_Calls: []
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &482525078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482525073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f491bd41073c4546b0401319ad9d484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxValue>k__BackingField: 99999
-  <CurrentValue>k__BackingField: 100
+  <MaxValue>k__BackingField:
+    <Base>k__BackingField: 999999
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 999999
+    <Value>k__BackingField: 999999
+  <CurrentValue>k__BackingField: 500
   OnValueZero:
     m_PersistentCalls:
       m_Calls: []

@@ -1,4 +1,1 @@
-using UnityEngine;
-
-public class HealthMeter : Meter {
-}
+public class HealthMeter : Meter {}

@@ -10,24 +10,4 @@ public class CurrencyMeter : Meter {
             Debug.LogError("Multiple CurrencyMeter instances");
         }
     }
-
-    public bool CanAfford(float amount) {
-        if (amount < 0) {
-            throw new System.ArgumentException("Spend amount cannot be negative");
-        }
-        return amount <= CurrentValue;
-    }
-
-    public bool Spend(float amount) {
-        if (amount < 0) {
-            Debug.LogError("Cannot spend negative amount");
-            return false;
-        } else if (!CanAfford(amount)) {
-            Debug.LogError("Not enough currency");
-            return false;
-        }
-
-        AddDelta(-amount);
-        return true;
-    }
 }

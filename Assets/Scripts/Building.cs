@@ -28,7 +28,7 @@ public class Building : MonoBehaviour {
         } else if (!IsBuildableAt(tile)) {
             Debug.LogError($"Cannot build at {tile}");
             return false;
-        } else if (!CurrencyMeter.Instance.CanAfford(Cost)) {
+        } else if (!CurrencyMeter.Instance.HasEnough(Cost)) {
             Debug.LogError("Not enough currency");
             return false;
         }
@@ -49,7 +49,7 @@ public class Building : MonoBehaviour {
 
         Tile = tile;
         transform.position = tile.transform.position;
-        CurrencyMeter.Instance.Spend(Cost);
+        CurrencyMeter.Instance.Subtract(Cost);
         Pausable.Unpause(gameObject);
         return true;
     }

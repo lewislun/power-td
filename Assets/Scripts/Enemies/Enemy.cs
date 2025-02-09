@@ -20,12 +20,12 @@ public class Enemy : MonoBehaviour, IDamageable {
         pathNavigator.OnReachedDestination.AddListener(OnReachDestination);
     }
 
-    public void TakeDamage(float damage) {
-        healthMeter.AddDelta(-damage);
+    public void Damage(float damage) {
+        healthMeter.Subtract(damage);
     }
 
-    public void HealDamage(float healAmount) {
-        healthMeter.AddDelta(healAmount);
+    public void Heal(float healAmount) {
+        healthMeter.Add(healAmount);
     }
 
     public void OnReachDestination() {
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour, IDamageable {
     }
 
     public void Kill() {
-        CurrencyMeter.Instance.AddDelta(currencyReward);
+        CurrencyMeter.Instance.Add(currencyReward);
         Die();
     }
 
