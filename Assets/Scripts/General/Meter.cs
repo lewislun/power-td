@@ -42,7 +42,10 @@ public class Meter : MonoBehaviour {
     protected void AddDelta(float delta) {
         if (delta == 0) return;
 
+        float previousValue = CurrentValue;
         CurrentValue = Mathf.Clamp(CurrentValue + delta, 0, MaxValue.Value);
+        if (CurrentValue == previousValue) return;
+
         if (CurrentValue == 0) {
             OnValueZero.Invoke();
         } else if (CurrentValue == MaxValue.Value) {

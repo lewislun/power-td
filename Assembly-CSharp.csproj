@@ -65,7 +65,6 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.0.36f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/DragAndBuild.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IPausable.cs" />
     <Compile Include="Assets/Scripts/Tiles/BuildableTile.cs" />
@@ -80,6 +79,7 @@
     <Compile Include="Assets/Scripts/Interfaces/IProjectile.cs" />
     <Compile Include="Assets/Scripts/TargetFinder.cs" />
     <Compile Include="Assets/Scripts/Tiles/ObstacleTile.cs" />
+    <Compile Include="Assets/Scripts/UI/EnergyBar.cs" />
     <Compile Include="Assets/Scripts/GameBoard/PathFinder.cs" />
     <Compile Include="Assets/Scripts/Enemies/PathNavigator.cs" />
     <Compile Include="Assets/Scripts/Buildings/StaticGenerator.cs" />
@@ -91,6 +91,7 @@
     <Compile Include="Assets/Scripts/Buildings/Building.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
+    <Compile Include="Assets/Scripts/UI/DragAndBuild.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
