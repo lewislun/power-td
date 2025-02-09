@@ -83,6 +83,7 @@
     <Compile Include="Assets/Scripts/Enemies/PathNavigator.cs" />
     <Compile Include="Assets/Scripts/Buildings/StaticGenerator.cs" />
     <Compile Include="Assets/Scripts/Projectiles/ImpactProjectile.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/DirectionalLaser.cs" />
     <Compile Include="Assets/Scripts/Attributes/ReadOnly.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IDamagable.cs" />
     <Compile Include="Assets/Scripts/Enemies/Enemy.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets/Scripts/Projectiles/IProjectile.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
+    <Compile Include="Assets/Scripts/General/Layers.cs" />
     <Compile Include="Assets/Scripts/UI/DragAndBuild.cs" />
   </ItemGroup>
   <ItemGroup>

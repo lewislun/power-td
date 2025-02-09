@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToBase: 1
+  currencyReward: 10
 --- !u!114 &3955844715187721216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +189,6 @@ MonoBehaviour:
   OnReachedDestination:
     m_PersistentCalls:
       m_Calls: []
-  NextPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6415417121907492585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51095063ab8f94b85adc373b84153d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 100
+  <MaxValue>k__BackingField:
+    <Base>k__BackingField: 100
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 3.4028235e+38
+    <Value>k__BackingField: 100
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
   <CurrentValue>k__BackingField: 100
   OnValueZero:
     m_PersistentCalls:
@@ -224,8 +231,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51095063ab8f94b85adc373b84153d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxValue: 100
-  <CurrentValue>k__BackingField: 100
+  <MaxValue>k__BackingField:
+    <Base>k__BackingField: 0
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 3.4028235e+38
+    <Value>k__BackingField: 0
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+  <CurrentValue>k__BackingField: 0
   OnValueZero:
     m_PersistentCalls:
       m_Calls: []
@@ -252,7 +266,6 @@ MonoBehaviour:
   OnReachedDestination:
     m_PersistentCalls:
       m_Calls: []
-  NextPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5983218651249580546
 GameObject:
   m_ObjectHideFlags: 0
