@@ -65,6 +65,8 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.0.36f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/Buildings/TargetFinder.cs" />
+    <Compile Include="Assets/Scripts/Buildings/Battery.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IPausable.cs" />
     <Compile Include="Assets/Scripts/Tiles/BuildableTile.cs" />
@@ -75,7 +77,6 @@
     <Compile Include="Assets/Scripts/General/CounterParentRotation.cs" />
     <Compile Include="Assets/Scripts/General/ModifiableFloat.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthMeter.cs" />
-    <Compile Include="Assets/Scripts/TargetFinder.cs" />
     <Compile Include="Assets/Scripts/Tiles/ObstacleTile.cs" />
     <Compile Include="Assets/Scripts/UI/EnergyBar.cs" />
     <Compile Include="Assets/Scripts/GameBoard/PathFinder.cs" />

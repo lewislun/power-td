@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class ModifiableFloat {
@@ -12,7 +13,16 @@ public class ModifiableFloat {
     public Dictionary<int, float> AdditiveModifiers { get; private set; } = new();
     public Dictionary<int, float> MultiplicativeModifiers { get; private set; } = new();
 
+    public UnityEvent OnValueChanged = new();
+
     private int nextModifierId = 0;
+
+    public ModifiableFloat(float Base = 0f, float Min = 0f, float Max = float.MaxValue) {
+        this.Base = Base;
+        this.Min = Min;
+        this.Max = Max;
+        UpdateValue();
+    }
 
     public void SetBase(float value) {
         Base = value;
@@ -30,6 +40,7 @@ public class ModifiableFloat {
     }
 
     public void UpdateValue() {
+        float prevValue = Value;
         Value = Base;
         foreach (var modifier in AdditiveModifiers.Values) {
             Value += modifier;
@@ -38,6 +49,9 @@ public class ModifiableFloat {
             Value *= modifier;
         }
         Value = Mathf.Clamp(Value, Min, Max);
+        if (prevValue != Value) {
+            OnValueChanged.Invoke();
+        }
     }
 
     public int AddAdditiveModifier(float modifier) {

@@ -17,6 +17,7 @@ public class EnergyBar : MonoBehaviour {
 
     private void Start() {
         rectTransform = GetComponent<RectTransform>();
+        UpdateFill();
         EnergyMeter.Instance.OnValueChanged.AddListener(UpdateFill);
     }
 
