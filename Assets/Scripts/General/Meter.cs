@@ -22,7 +22,6 @@ public class Meter : MonoBehaviour {
             Debug.LogError("Cannot add negative amount");
             return false;
         } else if (CurrentValue == MaxValue.Value) {
-            Debug.LogError("Cannot add to full meter");
             return false;
         }
 
@@ -33,9 +32,6 @@ public class Meter : MonoBehaviour {
     public bool Subtract(float amount) {
         if (amount < 0) {
             Debug.LogError("Cannot subtract negative amount");
-            return false;
-        } else if (!HasEnough(amount)) {
-            Debug.LogError("Cannot subtract more than current value");
             return false;
         }
 

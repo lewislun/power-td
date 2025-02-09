@@ -23,7 +23,7 @@ public class ImpactProjectile : MonoBehaviour, IProjectile {
     }
 
     private void Hit(IDamageable damageable) {
-        damageable.TakeDamage(Damage);
+        damageable.Damage(Damage);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

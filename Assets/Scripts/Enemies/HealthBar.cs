@@ -19,7 +19,11 @@ public class HealthBar : MonoBehaviour {
     }
 
     private void UpdateFill() {
-        Fill.localScale = new Vector3(HealthMeter.CurrentValue / HealthMeter.MaxValue.Value, 1, 1);
+        float healthPercentage = HealthMeter.CurrentValue / HealthMeter.MaxValue.Value;
+        if (float.IsNaN(healthPercentage)) {
+            return;
+        }
+        Fill.localScale = new Vector3(healthPercentage, 1, 1);
         Fill.transform.localPosition = new Vector3((Fill.localScale.x - 1) / 2, 0, 0);
     }
 
