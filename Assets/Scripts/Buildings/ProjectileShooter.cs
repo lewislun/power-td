@@ -32,7 +32,9 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
         if (targetFinder.CurrentTarget == null) {
             return false;
         }
-        GameObject projectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity, transform);
+        Transform parent = LevelManager.Instance.ProjectileParent.transform;
+        Vector3 pos = new(transform.position.x, transform.position.y, parent.position.z);
+        GameObject projectile = Instantiate(ProjectilePrefab, pos, Quaternion.identity, parent);
         projectile.GetComponent<IProjectile>().Target = targetFinder.CurrentTarget;
         return true;
     }

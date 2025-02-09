@@ -5,7 +5,6 @@ public class DragAndBuild : MonoBehaviour {
 
     [Header("References")]
     public GameObject BuildingPrefab;
-    public GameObject BuildingParent;
 
     private Building currentBuilding;
 
@@ -25,12 +24,6 @@ public class DragAndBuild : MonoBehaviour {
         return null;
     }
 
-    private void Awake() {
-        if (BuildingParent == null) {
-            BuildingParent = GameObject.Find("Buildings");
-        }
-    }
-
     public void BeginDragHandler(BaseEventData eventData) {
         if (BuildingPrefab == null || BuildingPrefab.GetComponent<Building>() == null) {
             Debug.LogError("BuildingPrefab is null or is not a Building");
@@ -38,7 +31,8 @@ public class DragAndBuild : MonoBehaviour {
         }
 
         Vector3 position = PointerPosToWorldPos((PointerEventData)eventData);
-        GameObject building = Instantiate(BuildingPrefab, position, Quaternion.identity, BuildingParent.transform);
+        Transform parent = LevelManager.Instance.BuildingParent.transform;
+        GameObject building = Instantiate(BuildingPrefab, position, Quaternion.identity, parent);
         currentBuilding = building.GetComponent<Building>();
     }
 

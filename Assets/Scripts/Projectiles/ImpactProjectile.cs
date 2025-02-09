@@ -15,6 +15,7 @@ public class ImpactProjectile : MonoBehaviour, IProjectile {
             return;
         }
         Vector3 direction = Target.position - transform.position;
+        direction.z = 0;
         transform.position += Time.deltaTime * TravelSpeed * direction.normalized;
     }
 
