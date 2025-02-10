@@ -65,7 +65,6 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.0.36f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/Interfaces/ISelectable.cs" />
     <Compile Include="Assets/Scripts/Buildings/TargetFinder.cs" />
     <Compile Include="Assets/Scripts/Buildings/Battery.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthBar.cs" />

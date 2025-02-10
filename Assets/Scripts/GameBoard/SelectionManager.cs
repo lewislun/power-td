@@ -13,12 +13,6 @@ public class SelectionManager : MonoBehaviour {
     protected Dictionary<GameObject, UnityEvent> OnSelectByObj { get; private set; } = new();
     protected Dictionary<GameObject, UnityEvent> OnDeselectByObj { get; private set; } = new();
 
-    static private Vector3 PointerPosToWorldPos(PointerEventData pointerEventData) {
-        Vector3 pos = Camera.main.ScreenToWorldPoint(pointerEventData.position);
-        pos.z = Camera.main.transform.position.z;
-        return pos;
-    }
-
     public bool ToggleSelect(GameObject obj) {
         if (SelectedObject == obj) {
             Deselect();
