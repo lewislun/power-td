@@ -10,23 +10,30 @@ public class PathNavigator : MonoBehaviour {
     [Header("Events")]
     public UnityEvent OnReachedDestination;
 
+    [Header("Info")]
+    [field:SerializeField, ReadOnly] public Vector2 Offset { get; private set; } = Vector2.zero;
+
     public ITile NextTile { get; private set; }
     public Vector3 NextPos { get; private set; }
 
     public void SetNextTile(ITile tile) {
         NextTile = tile;
         NextPos = new Vector3(
-            NextTile.transform.position.x + Random.Range(-RandomOffset, RandomOffset),
-            NextTile.transform.position.y + Random.Range(-RandomOffset, RandomOffset),
+            NextTile.transform.position.x + Offset.x,
+            NextTile.transform.position.y + Offset.y,
             transform.parent.position.z
         );
     }
 
-    private void Update() {
+    protected void Awake() {
+        Offset = new Vector2(Random.Range(-RandomOffset, RandomOffset), Random.Range(-RandomOffset, RandomOffset));
+    }
+
+    protected void Update() {
         MoveTowardsNextTile();
     }
 
-    private void MoveTowardsNextTile() {
+    protected void MoveTowardsNextTile() {
         if (NextTile == null) {
             return;
         }
