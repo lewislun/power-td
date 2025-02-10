@@ -22,12 +22,13 @@ public class RotateAroundAnchor : MonoBehaviour {
     }
 
     protected void UpdatePosition() {
-        Vector2 newPos = (Vector2)Anchor.position + Direction * Radius;
+        float prevZ = transform.position.z;
+        Vector3 newPos = Anchor.position + (Vector3)Direction * Radius;
+        newPos.z = prevZ;
         transform.position = newPos;
     }
 
     protected void UpdateRotation() {
-        Debug.Log($"Direction: {Direction}");
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }

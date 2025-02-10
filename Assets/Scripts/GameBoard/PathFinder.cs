@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class PathNode {
     public ITile Tile;
@@ -12,6 +13,9 @@ public class PathFinder : MonoBehaviour {
 
     [Header("References")]
     public GameObject TileParent;
+
+    [Header("Events")]
+    public UnityEvent OnPathUpdate = new();
 
     public static PathFinder Instance { get; private set; }
 
@@ -156,6 +160,8 @@ public class PathFinder : MonoBehaviour {
                 visitedSet.Add(nextNode);
             }
         }
+
+        OnPathUpdate.Invoke();
     }
 
     private void ClearPaths() {

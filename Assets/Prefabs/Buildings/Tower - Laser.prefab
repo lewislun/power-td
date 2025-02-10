@@ -154,7 +154,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &7884854167574081863
@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 7884854167574081863}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -0.1}
+  m_LocalPosition: {x: 0, y: 1.5, z: -1}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -377,11 +377,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.z

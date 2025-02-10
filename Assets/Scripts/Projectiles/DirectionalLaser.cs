@@ -60,10 +60,7 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     }
 
     protected void RenderLaser(Vector3 laserEndPos) {
-        laserEndPos -= transform.position;
-        laserEndPos.x /= transform.lossyScale.x;
-        laserEndPos.y /= transform.lossyScale.y;
-        laserEndPos.z = 0;
+        lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, laserEndPos);
     }
 
