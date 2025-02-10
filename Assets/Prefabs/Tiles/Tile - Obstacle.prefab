@@ -68,10 +68,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile - Obstacle
       objectReference: {fileID: 0}
-    - target: {fileID: 7664476446425834237, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8933890161098742815, guid: 5c2b3cdc359024eabbf0fea4db55ff7a, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 0

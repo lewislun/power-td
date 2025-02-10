@@ -1,12 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Selectable))]
 public class Building : MonoBehaviour {
 
     [Header("Attributes")]
     [field:SerializeField] public bool IsPassable { get; private set; } = false;
     [field:SerializeField] public float Cost { get; private set; } = 100;
 
-    [Header("Debug")]
+    [Header("Info")]
     [field:SerializeField, ReadOnly] public BuildableTile Tile { get; private set; }
 
     private void Awake() {

@@ -7,7 +7,7 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     public float EnergyPerSec = 1f;
     public float DamagePerSec = 1f;
     public Vector2 Direction = Vector2.right;
-    public Transform Parent; // to avoid hitting self
+    public Transform BlockerToIgnore; // to avoid hitting self
 
     [Header("Info")]
     [field: SerializeField] public bool IsPaused { get; private set; }
@@ -20,7 +20,7 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     private LayerMask damageHitMask;
 
     protected void Awake() {
-        laserEndHitMask = LayerMask.GetMask(Layer.Obstacle);
+        laserEndHitMask = LayerMask.GetMask(Layer.LaserBlocker);
         damageHitMask = LayerMask.GetMask(Layer.Enemy);
     }
 
@@ -70,8 +70,7 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     protected Vector3 GetLaserEndPos() {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Direction, 100f, laserEndHitMask);
         foreach (RaycastHit2D hit in hits) {
-            Debug.Log(hit.collider.gameObject.name);
-            if (hit.collider != null && hit.collider.transform != Parent) {
+            if (hit.collider != null && hit.collider.transform != BlockerToIgnore) {
                 return hit.point;
             }
         }
