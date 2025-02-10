@@ -39,6 +39,14 @@ public class Meter : MonoBehaviour {
         return true;
     }
 
+    public bool SubtractIfEnough(float amount) {
+        if (!HasEnough(amount)) {
+            return false;
+        }
+
+        return Subtract(amount);
+    }
+
     protected void AddDelta(float delta) {
         if (delta == 0) return;
 

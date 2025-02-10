@@ -77,6 +77,7 @@
     <Compile Include="Assets/Scripts/General/CounterParentRotation.cs" />
     <Compile Include="Assets/Scripts/General/ModifiableFloat.cs" />
     <Compile Include="Assets/Scripts/Enemies/HealthMeter.cs" />
+    <Compile Include="Assets/Scripts/General/Enums.cs" />
     <Compile Include="Assets/Scripts/Tiles/ObstacleTile.cs" />
     <Compile Include="Assets/Scripts/UI/EnergyBar.cs" />
     <Compile Include="Assets/Scripts/GameBoard/PathFinder.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="Assets/Scripts/Projectiles/IProjectile.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
-    <Compile Include="Assets/Scripts/General/Layers.cs" />
     <Compile Include="Assets/Scripts/UI/DragAndBuild.cs" />
   </ItemGroup>
   <ItemGroup>

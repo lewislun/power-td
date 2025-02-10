@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8281787157841726413}
+  - component: {fileID: 6253107638911825731}
   - component: {fileID: 6813479358632309224}
   m_Layer: 0
-  m_Name: Line
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +33,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1496594340327657920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6253107638911825731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430934110721408607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd3befea1b2244e485459b45f62d1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnergyPerSec: 1
+  DamagePerSec: 50
+  Direction: {x: 1, y: 0}
+  Parent: {fileID: 1496594340327657920}
+  <IsPaused>k__BackingField: 0
 --- !u!120 &6813479358632309224
 LineRenderer:
   serializedVersion: 2
@@ -79,16 +97,16 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.18150711
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -100,8 +118,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.3820755, g: 1, b: 0.92624104, a: 1}
+      key1: {r: 0.6084906, g: 1, b: 0.74095726, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -125,11 +143,11 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 3
+    numCapVertices: 3
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -149,11 +167,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7851133
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.390291
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6296769409633621361, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Name
-      value: Tower Variant
+      value: Tower - Laser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

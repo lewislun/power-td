@@ -10,16 +10,14 @@ public class DragAndBuild : MonoBehaviour {
 
     static private Vector3 PointerPosToWorldPos(PointerEventData pointerEventData) {
         Vector3 pos = Camera.main.ScreenToWorldPoint(pointerEventData.position);
-        pos.z = 0;
+        pos.z = LevelManager.Instance.BuildingParent.transform.position.z;
         return pos;
     }
 
     static private BuildableTile GetBuildableTile(Vector3 position) {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(position, Vector2.zero);
-        foreach (RaycastHit2D hit in hits) {
-            if (hit.collider.TryGetComponent<BuildableTile>(out var tile)) {
-                return tile;
-            }
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, 10f, LayerMask.GetMask(Layer.Tile));
+        if (hit.collider != null && hit.collider.TryGetComponent<BuildableTile>(out var tile)) {
+            return tile;
         }
         return null;
     }
