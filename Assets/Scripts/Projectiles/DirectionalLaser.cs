@@ -6,7 +6,7 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     [Header("Attributes")]
     public float EnergyPerSec = 1f;
     public float DamagePerSec = 1f;
-    public Vector2 Direction = Vector2.right;
+    public Vector2 Direction = Vector2.up;
     public Transform BlockerToIgnore; // to avoid hitting self
 
     [Header("Info")]

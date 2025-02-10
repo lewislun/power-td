@@ -5,7 +5,7 @@ public class RotateAroundAnchor : MonoBehaviour {
   	[Header("Attributes")]
     public Transform Anchor;
     public float Radius = 0f;  // if set to 0, will use the distance from the anchor to the object
-    [field:SerializeField] public Vector2 Direction { get; private set; } = Vector2.zero;
+    [field:SerializeField] public Vector2 Direction { get; private set; } = Vector2.up;
 
     public void SetDirection(Vector2 direction) {
         Direction = direction;

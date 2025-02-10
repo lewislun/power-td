@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnergyPerSec: 1
   DamagePerSec: 50
-  Direction: {x: 0, y: 0}
+  Direction: {x: 0, y: 1}
   BlockerToIgnore: {fileID: 8360811481803485324}
   <IsPaused>k__BackingField: 0
 --- !u!120 &6813479358632309224
