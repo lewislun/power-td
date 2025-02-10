@@ -19,6 +19,10 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     private LayerMask laserEndHitMask;
     private LayerMask damageHitMask;
 
+    public void SetDirection(Vector2 direction) {
+        Direction = direction;
+    }
+
     protected void Awake() {
         laserEndHitMask = LayerMask.GetMask(Layer.LaserBlocker);
         damageHitMask = LayerMask.GetMask(Layer.Enemy);
