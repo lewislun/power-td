@@ -95,7 +95,6 @@
     <Compile Include="Assets/Scripts/Buildings/ProjectileShooter.cs" />
     <Compile Include="Assets/Scripts/GameBoard/CurrencyMeter.cs" />
     <Compile Include="Assets/Scripts/Buildings/Building.cs" />
-    <Compile Include="Assets/Scripts/General/SpriteOnSelect.cs" />
     <Compile Include="Assets/Scripts/Projectiles/IProjectile.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
