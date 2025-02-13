@@ -1,40 +1,33 @@
 using UnityEngine;
 
-public class Battery : MonoBehaviour, IPausable {
+public class Battery : Building {
 
-    [Header("Attributes")]
     [field: SerializeField] public ModifiableFloat EnergyCapacity { get; protected set; } = new(1000f);
 
-    [Header("Information")]
-    [field: SerializeField] public bool IsPaused { get; private set; }
+    protected int modifierId = -1;
 
-    public void Pause() => IsPaused = true;
-    public void Unpause() => IsPaused = false;
-
-    private int modifierId = -1;
-
-    private void Update() {
+    protected void Update() {
         if (modifierId != -1 || IsPaused) {
             return;
         }
 
-        UpdateCapacity();
+        UpdateCapacity(EnergyCapacity.Value);
         EnergyCapacity.OnValueChanged.AddListener(UpdateCapacity);
     }
 
-    private void OnDestroy() {
+    protected void OnDestroy() {
         RemoveCapacity();
     }
 
-    private void UpdateCapacity() {
+    protected void UpdateCapacity(float newValue) {
         if (modifierId != -1) {
-            EnergyMeter.Instance.MaxValue.EditModifier(modifierId, EnergyCapacity.Value);
+            EnergyMeter.Instance.MaxValue.EditModifier(modifierId, newValue);
         } else {
-            modifierId = EnergyMeter.Instance.MaxValue.AddAdditiveModifier(EnergyCapacity.Value);
+            modifierId = EnergyMeter.Instance.MaxValue.AddAdditiveModifier(newValue);
         }
     }
 
-    private void RemoveCapacity() {
+    protected void RemoveCapacity() {
         if (modifierId != -1) {
             EnergyMeter.Instance.MaxValue.RemoveModifier(modifierId);
         }

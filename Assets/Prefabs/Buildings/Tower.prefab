@@ -195,6 +195,7 @@ MonoBehaviour:
   <IsPassable>k__BackingField: 0
   <Cost>k__BackingField: 100
   <Tile>k__BackingField: {fileID: 0}
+  <IsPaused>k__BackingField: 0
 --- !u!61 &3717240445794630791
 BoxCollider2D:
   m_ObjectHideFlags: 0

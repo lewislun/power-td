@@ -20,35 +20,42 @@ public enum TargetSwitchStrategy {
 public class TargetFinder : MonoBehaviour {
 
     [Header("Attributes")]
-    [SerializeField]
-    private float _range = 1;
-    public float Range {
-        get => _range;
-        set {
-            _range = value;
-            float scale = transform.localScale.x;
-            GetComponent<CircleCollider2D>().radius = (_range + 0.5f) / scale;
-        }
-    }
-    public TargetPriority targetPriority = TargetPriority.Closest;
-    public TargetSwitchStrategy targetSwitchStrategy = TargetSwitchStrategy.UntilLost;
+    public TargetPriority TargetPriority = TargetPriority.Closest;
+    public TargetSwitchStrategy TargetSwitchStrategy = TargetSwitchStrategy.UntilLost;
 
     [Header("Events")]
     public UnityEvent OnTargetChanged;
 
-    [Header("Information")]
-    [field:SerializeField] public Transform CurrentTarget { get; private set; }
+    [Header("Info")]
+    [field:SerializeField, ReadOnly] public float Range { get; private set; } = 1f;
+    [field:SerializeField, ReadOnly] public Transform CurrentTarget { get; private set; }
 
 
-    private HashSet<Transform> availableTargets = new();
+    private readonly HashSet<Transform> availableTargets = new();
     private readonly Type targetType = typeof(Enemy);
+    private CircleCollider2D circleCollider;
 
-    void OnValidate() {
-        // Trigger setters when the value is changed in the editor
-        Range = _range;
+
+    public void SetRange(float range) {
+        Range = range;
+        UpdateColliderRadius();
     }
 
-    private void OnTriggerEnter2D(Collider2D trigger) {
+    public void UpdateColliderRadius() {
+        circleCollider.radius = (Range + 0.5f) / transform.lossyScale.x;
+    }
+
+    protected void Awake() {
+        circleCollider = GetComponent<CircleCollider2D>();
+    }
+
+    protected void Update() {
+        if (TargetSwitchStrategy == TargetSwitchStrategy.FocusPriority) {
+            SwitchTarget();
+        }
+    }
+
+    protected void OnTriggerEnter2D(Collider2D trigger) {
         Component component = trigger.GetComponent(targetType);
         if (component) {
             availableTargets.Add(component.transform);
@@ -58,7 +65,7 @@ public class TargetFinder : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit2D(Collider2D trigger) {
+    protected void OnTriggerExit2D(Collider2D trigger) {
         Component component = trigger.GetComponent(targetType);
         if (component) {
             availableTargets.Remove(component.transform);
@@ -68,9 +75,9 @@ public class TargetFinder : MonoBehaviour {
         }
     }
 
-    private void SwitchTarget() {
+    protected void SwitchTarget() {
         Transform prevTarget = CurrentTarget;
-        CurrentTarget = targetPriority switch {
+        CurrentTarget = TargetPriority switch {
             TargetPriority.Closest => GetClosestTarget(),
             TargetPriority.Furthest => GetFurthestTarget(),
             TargetPriority.Random => GetRandomTarget(),
@@ -81,7 +88,7 @@ public class TargetFinder : MonoBehaviour {
         }
     }
 
-    private Transform GetClosestTarget() {
+    protected Transform GetClosestTarget() {
         Transform closestTarget = null;
         float closestDistance = float.MaxValue;
         foreach (Transform target in availableTargets) {
@@ -98,7 +105,7 @@ public class TargetFinder : MonoBehaviour {
         return closestTarget;
     }
 
-    private Transform GetFurthestTarget() {
+    protected Transform GetFurthestTarget() {
         Transform furthestTarget = null;
         float furthestDistance = float.MinValue;
         foreach (Transform target in availableTargets) {
@@ -115,14 +122,8 @@ public class TargetFinder : MonoBehaviour {
         return furthestTarget;
     }
 
-    private Transform GetRandomTarget() {
+    protected Transform GetRandomTarget() {
         int randomIndex = UnityEngine.Random.Range(0, availableTargets.Count);
         return new List<Transform>(availableTargets)[randomIndex];
-    }
-
-    private void Update() {
-        if (targetSwitchStrategy == TargetSwitchStrategy.FocusPriority) {
-            SwitchTarget();
-        }
     }
 }

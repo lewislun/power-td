@@ -118,3 +118,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnergyPerSec>k__BackingField: 1
+  <IsPaused>k__BackingField: 0

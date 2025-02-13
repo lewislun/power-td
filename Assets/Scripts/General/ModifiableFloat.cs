@@ -13,7 +13,7 @@ public class ModifiableFloat {
     public Dictionary<int, float> AdditiveModifiers { get; private set; } = new();
     public Dictionary<int, float> MultiplicativeModifiers { get; private set; } = new();
 
-    public UnityEvent OnValueChanged = new();
+    public UnityEvent<float> OnValueChanged = new();
 
     private int nextModifierId = 0;
 
@@ -50,7 +50,7 @@ public class ModifiableFloat {
         }
         Value = Mathf.Clamp(Value, Min, Max);
         if (prevValue != Value) {
-            OnValueChanged.Invoke();
+            OnValueChanged.Invoke(Value);
         }
     }
 

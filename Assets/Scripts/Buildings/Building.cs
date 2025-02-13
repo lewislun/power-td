@@ -1,16 +1,20 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Selectable))]
-public class Building : MonoBehaviour {
+public class Building : MonoBehaviour, IPausable {
 
     [Header("Attributes")]
-    [field:SerializeField] public bool IsPassable { get; private set; } = false;
-    [field:SerializeField] public float Cost { get; private set; } = 100;
+    [field: SerializeField] public bool IsPassable { get; private set; } = false;
+    [field: SerializeField] public float Cost { get; private set; } = 100;
 
     [Header("Info")]
-    [field:SerializeField, ReadOnly] public BuildableTile Tile { get; private set; }
+    [field: SerializeField, ReadOnly] public BuildableTile Tile { get; private set; }
+    [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
 
-    private void Awake() {
+    public void Pause() => IsPaused = true;
+    public void Unpause() => IsPaused = false;
+
+    protected virtual void Awake() {
         Pausable.Pause(gameObject);
     }
 
