@@ -60,12 +60,17 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     }
 
     protected void RenderLaser(Vector3 laserEndPos) {
+        if (!lineRenderer.enabled) {
+            lineRenderer.enabled = true;
+        }
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, laserEndPos);
     }
 
     protected void HideLaser() {
-        lineRenderer.SetPosition(1, Vector3.zero);
+        if (lineRenderer.enabled) {
+            lineRenderer.enabled = false;
+        }
     }
 
     protected Vector3 GetLaserEndPos() {
