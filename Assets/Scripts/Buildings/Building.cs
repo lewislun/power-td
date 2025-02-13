@@ -7,6 +7,9 @@ public class Building : MonoBehaviour, IPausable {
     [field: SerializeField] public bool IsPassable { get; private set; } = false;
     [field: SerializeField] public float Cost { get; private set; } = 100;
 
+    [Header("Events")]
+    public UnityEngine.Events.UnityEvent OnBuilt;
+
     [Header("Info")]
     [field: SerializeField, ReadOnly] public BuildableTile Tile { get; private set; }
     [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
@@ -56,6 +59,7 @@ public class Building : MonoBehaviour, IPausable {
         transform.position = tile.transform.position;
         CurrencyMeter.Instance.Subtract(Cost);
         Pausable.Unpause(gameObject);
+        OnBuilt.Invoke();
         return true;
     }
 }

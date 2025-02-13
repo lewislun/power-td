@@ -113,6 +113,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5391557049138361655}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5391557049138361655}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 218389864170227978, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: OnDeselected.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -204,6 +264,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsPassable>k__BackingField: 0
   <Cost>k__BackingField: 100
+  OnBuilt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5391557049138361655}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <Tile>k__BackingField: {fileID: 0}
   <IsPaused>k__BackingField: 0
   <Radius>k__BackingField:
@@ -262,6 +337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Range Display
       objectReference: {fileID: 0}
+    - target: {fileID: 240560249236012593, guid: 4d2d9b8ef417f4c60a43ca5275d69973, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1343112258968073930, guid: 4d2d9b8ef417f4c60a43ca5275d69973, type: 3}
       propertyPath: m_Name
       value: Range Display Fill
@@ -311,6 +390,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d2d9b8ef417f4c60a43ca5275d69973, type: 3}
+--- !u!1 &5391557049138361655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 240560249236012593, guid: 4d2d9b8ef417f4c60a43ca5275d69973, type: 3}
+  m_PrefabInstance: {fileID: 5297373182052764422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6350316899554529476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1271377684163992514, guid: 4d2d9b8ef417f4c60a43ca5275d69973, type: 3}
@@ -332,7 +416,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3946343845987752191, guid: 4d2d9b8ef417f4c60a43ca5275d69973, type: 3}
   m_PrefabInstance: {fileID: 5297373182052764422}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5391557049138361655}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2094980918743485b9fc27e1e2c20a68, type: 3}
