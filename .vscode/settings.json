@@ -62,6 +62,7 @@
         "Funcs",
         "Mathf",
         "pausables",
-        "Rigidbody"
+        "Rigidbody",
+        "TextMeshProUGUI"
     ]
 }

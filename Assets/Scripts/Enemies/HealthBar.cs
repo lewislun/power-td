@@ -18,8 +18,8 @@ public class HealthBar : MonoBehaviour {
         HealthMeter.OnValueChanged.AddListener(UpdateFill);
     }
 
-    private void UpdateFill() {
-        float healthPercentage = HealthMeter.CurrentValue / HealthMeter.MaxValue.Value;
+    private void UpdateFill(float value) {
+        float healthPercentage = value / HealthMeter.MaxValue.Value;
         if (float.IsNaN(healthPercentage)) {
             return;
         }

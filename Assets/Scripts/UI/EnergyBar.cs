@@ -17,12 +17,11 @@ public class EnergyBar : MonoBehaviour {
 
     private void Start() {
         rectTransform = GetComponent<RectTransform>();
-        UpdateFill();
         EnergyMeter.Instance.OnValueChanged.AddListener(UpdateFill);
     }
 
-    private void UpdateFill() {
-        float energyPercentage = EnergyMeter.Instance.CurrentValue / EnergyMeter.Instance.MaxValue.Value;
+    private void UpdateFill(float value) {
+        float energyPercentage = value / EnergyMeter.Instance.MaxValue.Value;
         if (float.IsNaN(energyPercentage)) {
             return;
         }

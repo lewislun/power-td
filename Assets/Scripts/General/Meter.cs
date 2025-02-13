@@ -11,7 +11,7 @@ public class Meter : MonoBehaviour {
     [Header("Events")]
     public UnityEvent OnValueZero;
     public UnityEvent OnValueMax;
-    public UnityEvent OnValueChanged;
+    public UnityEvent<float> OnValueChanged;
 
     public bool HasEnough(float amount) {
         return amount <= CurrentValue;
@@ -59,7 +59,7 @@ public class Meter : MonoBehaviour {
         } else if (CurrentValue == MaxValue.Value) {
             OnValueMax.Invoke();
         }
-        OnValueChanged.Invoke();
+        OnValueChanged.Invoke(CurrentValue);
     }
 
     private void OnValidate() {
@@ -68,6 +68,6 @@ public class Meter : MonoBehaviour {
     }
 
     private void Start() {
-        MaxValue.UpdateValue();
+        OnValueChanged.Invoke(CurrentValue);
     }
 }
