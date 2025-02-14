@@ -6,7 +6,8 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
     public GameObject ProjectilePrefab;
 
     [Header("Attributes")]
-    public float ProjectilePerSec = 1f;
+    [field: SerializeField] public float ProjectilePerSec { get; set; } = 1f;
+    [field: SerializeField] public float Damage { get; set; } = 75f;
 
     [Header("Information")]
     [field: SerializeField, ReadOnly] public float TimeSinceLastShot { get; private set; } = 0f;
@@ -35,6 +36,7 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
         Vector3 pos = new(transform.position.x, transform.position.y, parent.position.z);
         GameObject projectile = Instantiate(ProjectilePrefab, pos, Quaternion.identity, parent);
         projectile.GetComponent<IProjectile>().SetTarget(Target);
+        projectile.GetComponent<IProjectile>().Damage = Damage;
         return true;
     }
 

@@ -180,7 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 3861462322269095489, guid: 1224090a253dc45e3bab1a877eab5218, type: 3}
-  ProjectilePerSec: 1
+  <ProjectilePerSec>k__BackingField: 1
+  <Damage>k__BackingField: 75
   <TimeSinceLastShot>k__BackingField: 0
   <CanShoot>k__BackingField: 0
   <Target>k__BackingField: {fileID: 0}
@@ -519,6 +520,46 @@ MonoBehaviour:
         - m_Target: {fileID: 6350316899554529476}
           m_TargetAssemblyTypeName: ScaleHook, Assembly-CSharp
           m_MethodName: SetScaleByTileRange
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  <Damage>k__BackingField:
+    <Base>k__BackingField: 75
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 3.4028235e+38
+    <Value>k__BackingField: 75
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5489357279151395985}
+          m_TargetAssemblyTypeName: ProjectileShooter, Assembly-CSharp
+          m_MethodName: set_Damage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  <ProjectilePerSec>k__BackingField:
+    <Base>k__BackingField: 1
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 3.4028235e+38
+    <Value>k__BackingField: 1
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5489357279151395985}
+          m_TargetAssemblyTypeName: ProjectileShooter, Assembly-CSharp
+          m_MethodName: set_ProjectilePerSec
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
