@@ -9,7 +9,8 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
     public float ProjectilePerSec = 1f;
 
     [Header("Information")]
-    [SerializeField, ReadOnly] private float timeSinceLastShot = 0f;
+    [field: SerializeField, ReadOnly] public float TimeSinceLastShot { get; private set; } = 0f;
+    [field: SerializeField, ReadOnly] public bool CanShoot { get; set; } = false;
     [field: SerializeField, ReadOnly] public Transform Target { get; private set; }
     [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
 
@@ -27,7 +28,7 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
     }
 
     public bool Shoot() {
-        if (Target == null) {
+        if (Target == null || !CanShoot) {
             return false;
         }
         Transform parent = LevelManager.Instance.ProjectileParent.transform;
@@ -42,11 +43,11 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
             return;
         }
 
-        timeSinceLastShot += Time.deltaTime;
-        if (timeSinceLastShot >= 1 / ProjectilePerSec) {
+        TimeSinceLastShot += Time.deltaTime;
+        if (TimeSinceLastShot >= 1 / ProjectilePerSec) {
             // TODO: check if rotation is done yet
             if (Shoot()) {
-                timeSinceLastShot = 0;
+                TimeSinceLastShot = 0;
             }
         }
     }

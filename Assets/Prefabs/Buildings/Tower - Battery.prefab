@@ -49,16 +49,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6111702410376519163, guid: 42ae07571ead0416684dd9af6f1e07f7, type: 3}
+    - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Color.b
-      value: 0.2588235
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Color.g
-      value: 0.65687674
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717240445794630791, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717240445794630791, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.12
       objectReference: {fileID: 0}
     - target: {fileID: 6296769409633621361, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Name
@@ -92,6 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsPassable>k__BackingField: 0
   <Cost>k__BackingField: 100
+  OnBuilt:
+    m_PersistentCalls:
+      m_Calls: []
   <Tile>k__BackingField: {fileID: 0}
   <IsPaused>k__BackingField: 0
   <EnergyCapacity>k__BackingField:

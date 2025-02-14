@@ -97,7 +97,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 3, z: 0}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6548931984849601706}
   - component: {fileID: 4409922028482929382}
   m_Layer: 13
-  m_Name: Cannon
+  m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,8 +234,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9210044076627910327, guid: 44a0ecad0ce914b0a8183b9d7d6aad47, type: 3}
-  m_Color: {r: 0.25490195, g: 0.7649877, b: 0.99607843, a: 1}
+  m_Sprite: {fileID: -8659494098057982370, guid: bb6fdbfd22fe84310b6345602fc3ae78, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -659,18 +659,18 @@ PrefabInstance:
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2231291127963831596, guid: 7cc4cf20c7fd940608dc38087ebaa0a8, type: 3}
+      objectReference: {fileID: -3931284693005590987, guid: f875da72d06ec4f3e9ebb93378ea14d6, type: 3}
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Color.b
-      value: 0.99607843
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Color.g
-      value: 0.76862746
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3368534572430229859, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Color.r
-      value: 0.25490198
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6296769409633621361, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Name
