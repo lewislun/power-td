@@ -5,4 +5,5 @@ public static class Layer {
 	public static string Enemy = "Enemy";
 	public static string Projectile = "Projectile";
 	public static string Laser = "Laser";
+	public static string Boundary = "Boundary";
 }

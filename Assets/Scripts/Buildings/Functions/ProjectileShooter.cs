@@ -33,7 +33,7 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
         Transform parent = LevelManager.Instance.ProjectileParent.transform;
         Vector3 pos = new(transform.position.x, transform.position.y, parent.position.z);
         GameObject projectile = Instantiate(ProjectilePrefab, pos, Quaternion.identity, parent);
-        projectile.GetComponent<IProjectile>().Target = Target;
+        projectile.GetComponent<IProjectile>().SetTarget(Target);
         return true;
     }
 

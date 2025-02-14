@@ -99,6 +99,7 @@
     <Compile Include="Assets/Scripts/Buildings/Cannon.cs" />
     <Compile Include="Assets/Scripts/GameBoard/CurrencyMeter.cs" />
     <Compile Include="Assets/Scripts/Buildings/Building.cs" />
+    <Compile Include="Assets/Scripts/General/DestroyOnHitBoundary.cs" />
     <Compile Include="Assets/Scripts/General/FaceTarget.cs" />
     <Compile Include="Assets/Scripts/Projectiles/IProjectile.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
