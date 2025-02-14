@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(TargetFinder))]
 public class ProjectileShooter : MonoBehaviour, IPausable {
     
     [Header("References")]
@@ -10,37 +9,32 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
     public float ProjectilePerSec = 1f;
 
     [Header("Information")]
-    [SerializeField] private float timeSinceLastShot = 0f;
-    [field: SerializeField] public bool IsPaused { get; private set; }
-
-    private TargetFinder targetFinder;
+    [SerializeField, ReadOnly] private float timeSinceLastShot = 0f;
+    [field: SerializeField, ReadOnly] public Transform Target { get; private set; }
+    [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
 
     public void Pause() => IsPaused = true;
     public void Unpause() => IsPaused = false;
 
-    private void Start() {
-        targetFinder = GetComponent<TargetFinder>();
-        targetFinder.OnTargetChanged.AddListener(OnTargetChanged);
+    public void SetTarget(Transform target) {
+        Target = target;
+    }
 
+    protected void Start() {
         if (ProjectilePrefab == null) {
             Debug.LogError("ProjectilePrefab is not set in " + name);
         }
     }
 
     public bool Shoot() {
-        // TODO: specific position to spawn projectile
-        if (targetFinder.CurrentTarget == null) {
+        if (Target == null) {
             return false;
         }
         Transform parent = LevelManager.Instance.ProjectileParent.transform;
         Vector3 pos = new(transform.position.x, transform.position.y, parent.position.z);
         GameObject projectile = Instantiate(ProjectilePrefab, pos, Quaternion.identity, parent);
-        projectile.GetComponent<IProjectile>().Target = targetFinder.CurrentTarget;
+        projectile.GetComponent<IProjectile>().Target = Target;
         return true;
-    }
-
-    private void OnTargetChanged() {
-        // TODO: rotate towards target
     }
 
     private void Update() {

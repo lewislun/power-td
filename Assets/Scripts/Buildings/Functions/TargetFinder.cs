@@ -24,7 +24,7 @@ public class TargetFinder : MonoBehaviour {
     public TargetSwitchStrategy TargetSwitchStrategy = TargetSwitchStrategy.UntilLost;
 
     [Header("Events")]
-    public UnityEvent OnTargetChanged;
+    public UnityEvent<Transform> OnTargetChanged;
 
     [Header("Info")]
     [field:SerializeField, ReadOnly] public float Range { get; private set; } = 1f;
@@ -47,6 +47,10 @@ public class TargetFinder : MonoBehaviour {
 
     protected void Awake() {
         circleCollider = GetComponent<CircleCollider2D>();
+        if (circleCollider.isTrigger == false) {
+            circleCollider.isTrigger = true;
+            Debug.LogWarning("CircleCollider2D is not set to trigger in " + name + ". Setting it to trigger.");
+        }
     }
 
     protected void Update() {
@@ -84,7 +88,7 @@ public class TargetFinder : MonoBehaviour {
             _ => GetClosestTarget(),
         };
         if (prevTarget != CurrentTarget) {
-            OnTargetChanged.Invoke();
+            OnTargetChanged.Invoke(CurrentTarget);
         }
     }
 
