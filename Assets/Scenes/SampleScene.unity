@@ -1709,7 +1709,7 @@ MonoBehaviour:
         Count: 1
         SecBeforeSpawns: 1
         SecBetweenSpawns: 0.3
-      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
+      - Prefab: {fileID: 51760113826841321, guid: f37a5ff6391bb49eea8ad3c67275b1d9, type: 3}
         Count: 30
         SecBeforeSpawns: 0
         SecBetweenSpawns: 0.3
