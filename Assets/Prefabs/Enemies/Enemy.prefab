@@ -15,10 +15,8 @@ GameObject:
   - component: {fileID: 1158103580675373686}
   - component: {fileID: 3955844715187721216}
   - component: {fileID: 6415417121907492585}
-  - component: {fileID: 8574393702568284605}
-  - component: {fileID: 6860091325452342556}
   m_Layer: 11
-  m_Name: Minion
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 5441725879769814380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.464, y: 0.811, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3577030757059424573}
@@ -172,6 +170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageToBase: 1
   currencyReward: 10
+  <OnDeath>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnKill>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3955844715187721216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +192,19 @@ MonoBehaviour:
   RandomOffset: 0.1
   OnReachedDestination:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158103580675373686}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: ReachDestination
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <Offset>k__BackingField: {x: 0, y: 0}
 --- !u!114 &6415417121907492585
 MonoBehaviour:
@@ -213,61 +229,25 @@ MonoBehaviour:
   <CurrentValue>k__BackingField: 100
   OnValueZero:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1158103580675373686}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnValueMax:
     m_PersistentCalls:
       m_Calls: []
   OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8574393702568284605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5441725879769814380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51095063ab8f94b85adc373b84153d59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxValue>k__BackingField:
-    <Base>k__BackingField: 0
-    <Min>k__BackingField: 0
-    <Max>k__BackingField: 3.4028235e+38
-    <Value>k__BackingField: 0
-    OnValueChanged:
-      m_PersistentCalls:
-        m_Calls: []
-  <CurrentValue>k__BackingField: 0
-  OnValueZero:
-    m_PersistentCalls:
-      m_Calls: []
-  OnValueMax:
-    m_PersistentCalls:
-      m_Calls: []
-  OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6860091325452342556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5441725879769814380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9b8e8fc8e6d448f096bcaedc8a192db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 1
-  RandomOffset: 0.05
-  OnReachedDestination:
-    m_PersistentCalls:
-      m_Calls: []
-  <Offset>k__BackingField: {x: 0, y: 0}
 --- !u!1 &5983218651249580546
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +364,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.7, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4907344815980654558}

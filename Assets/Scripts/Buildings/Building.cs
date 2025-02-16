@@ -37,7 +37,7 @@ public class Building : MonoBehaviour, IPausable {
             Debug.LogError($"Cannot build at {tile}");
             return false;
         } else if (!CurrencyMeter.Instance.HasEnough(Cost)) {
-            Debug.LogError("Not enough currency");
+            Debug.Log("Not enough currency");
             return false;
         }
 
@@ -48,7 +48,7 @@ public class Building : MonoBehaviour, IPausable {
         if (!IsPassable) {
             PathFinder.Instance.UpdatePaths();
             if (!PathFinder.Instance.AreDestinationsReachableFromAllSpawners()) {
-                Debug.LogError("Building is blocking paths");
+                Debug.Log("Building is blocking paths");
                 PathFinder.Instance.UpdatePaths();
                 tile.RemoveBuilding();
                 return false;

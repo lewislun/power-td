@@ -66,11 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Buildings/Battery.cs" />
-    <Compile Include="Assets/Scripts/Enemies/HealthBar.cs" />
     <Compile Include="Assets/Scripts/EditorProperties/ReadOnly.cs" />
     <Compile Include="Assets/Scripts/Tiles/BuildableTile.cs" />
     <Compile Include="Assets/Scripts/GameBoard/EnergyMeter.cs" />
     <Compile Include="Assets/Scripts/GameBoard/SelectionManager.cs" />
+    <Compile Include="Assets/Scripts/Enemies/Functions/HealthBar.cs" />
     <Compile Include="Assets/Scripts/Interactions/DragDirectionControl.cs" />
     <Compile Include="Assets/Scripts/Tiles/DestinationTile.cs" />
     <Compile Include="Assets/Scripts/General/IPausable.cs" />
@@ -79,16 +79,15 @@
     <Compile Include="Assets/Scripts/General/ModifiableFloat.cs" />
     <Compile Include="Assets/Scripts/Buildings/Functions/TargetFinder.cs" />
     <Compile Include="Assets/Scripts/General/Selectable.cs" />
-    <Compile Include="Assets/Scripts/Enemies/HealthMeter.cs" />
     <Compile Include="Assets/Scripts/General/RotateAroundAnchor.cs" />
     <Compile Include="Assets/Scripts/Buildings/Functions/ProjectileShooter.cs" />
     <Compile Include="Assets/Scripts/General/ScaleEventHook.cs" />
     <Compile Include="Assets/Scripts/General/CircleLine.cs" />
     <Compile Include="Assets/Scripts/General/Enums.cs" />
+    <Compile Include="Assets/Scripts/Enemies/Functions/PathNavigator.cs" />
     <Compile Include="Assets/Scripts/Tiles/ObstacleTile.cs" />
     <Compile Include="Assets/Scripts/UI/EnergyBar.cs" />
     <Compile Include="Assets/Scripts/GameBoard/PathFinder.cs" />
-    <Compile Include="Assets/Scripts/Enemies/PathNavigator.cs" />
     <Compile Include="Assets/Scripts/Buildings/StaticGenerator.cs" />
     <Compile Include="Assets/Scripts/Projectiles/ImpactProjectile.cs" />
     <Compile Include="Assets/Scripts/Projectiles/DirectionalLaser.cs" />
@@ -96,6 +95,8 @@
     <Compile Include="Assets/Scripts/UI/TextHook.cs" />
     <Compile Include="Assets/Scripts/General/IDamagable.cs" />
     <Compile Include="Assets/Scripts/Enemies/Enemy.cs" />
+    <Compile Include="Assets/Scripts/General/EventTrigger.cs" />
+    <Compile Include="Assets/Scripts/Enemies/Frostbane.cs" />
     <Compile Include="Assets/Scripts/Buildings/Cannon.cs" />
     <Compile Include="Assets/Scripts/GameBoard/CurrencyMeter.cs" />
     <Compile Include="Assets/Scripts/Buildings/Building.cs" />
@@ -103,7 +104,9 @@
     <Compile Include="Assets/Scripts/General/FaceTarget.cs" />
     <Compile Include="Assets/Scripts/Projectiles/IProjectile.cs" />
     <Compile Include="Assets/Scripts/GameBoard/LevelManager.cs" />
+    <Compile Include="Assets/Scripts/Enemies/Functions/HealthMeter.cs" />
     <Compile Include="Assets/Scripts/Tiles/SpawnerTile.cs" />
+    <Compile Include="Assets/Scripts/General/SetScale.cs" />
     <Compile Include="Assets/Scripts/UI/DragAndBuild.cs" />
   </ItemGroup>
   <ItemGroup>

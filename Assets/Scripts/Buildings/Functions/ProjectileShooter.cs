@@ -22,7 +22,7 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
         Target = target;
     }
 
-    protected void Start() {
+    protected void Awake() {
         if (ProjectilePrefab == null) {
             Debug.LogError("ProjectilePrefab is not set in " + name);
         }
@@ -47,7 +47,6 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
 
         TimeSinceLastShot += Time.deltaTime;
         if (TimeSinceLastShot >= 1 / ProjectilePerSec) {
-            // TODO: check if rotation is done yet
             if (Shoot()) {
                 TimeSinceLastShot = 0;
             }

@@ -1705,14 +1705,22 @@ MonoBehaviour:
   - SpawnInfos:
     - SpawnerTile: {fileID: 1990679642}
       Batches:
-      - Prefab: {fileID: 5441725879769814380, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
+      - Prefab: {fileID: 51760113826841321, guid: f37a5ff6391bb49eea8ad3c67275b1d9, type: 3}
+        Count: 1
+        SecBeforeSpawns: 1
+        SecBetweenSpawns: 0.3
+      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
+        Count: 30
+        SecBeforeSpawns: 0
+        SecBetweenSpawns: 0.3
+      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
         Count: 2000
         SecBeforeSpawns: 0
         SecBetweenSpawns: 0.3
       SecBeforeStart: 0
     - SpawnerTile: {fileID: 589546229}
       Batches:
-      - Prefab: {fileID: 5441725879769814380, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
+      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
         Count: 20
         SecBeforeSpawns: 0
         SecBetweenSpawns: 1
@@ -1754,6 +1762,7 @@ MonoBehaviour:
     OnValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  IsFullOnStart: 0
   <CurrentValue>k__BackingField: 0
   OnValueZero:
     m_PersistentCalls:
@@ -1784,6 +1793,7 @@ MonoBehaviour:
     OnValueChanged:
       m_PersistentCalls:
         m_Calls: []
+  IsFullOnStart: 0
   <CurrentValue>k__BackingField: 500
   OnValueZero:
     m_PersistentCalls:

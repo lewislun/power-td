@@ -1,7 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(CircleCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(HealthMeter))]
 [RequireComponent(typeof(PathNavigator))]
 public class Enemy : MonoBehaviour, IDamageable {
@@ -10,35 +9,38 @@ public class Enemy : MonoBehaviour, IDamageable {
     public float DamageToBase = 1f;
     public float currencyReward = 10f;
 
-    private HealthMeter healthMeter;
-    private PathNavigator pathNavigator;
+    [field: SerializeField] public UnityEvent OnDeath { get; private set; } = new();
+    [field: SerializeField] public UnityEvent OnKill { get; private set; } = new();
 
-    void Start() {
-        healthMeter = GetComponent<HealthMeter>();
-        healthMeter.OnValueZero.AddListener(Kill);
-        pathNavigator = GetComponent<PathNavigator>();
-        pathNavigator.OnReachedDestination.AddListener(OnReachDestination);
-    }
+    protected HealthMeter healthMeter;
+    protected PathNavigator pathNavigator;
 
-    public void Damage(float damage) {
+    public virtual void Damage(float damage) {
         healthMeter.Subtract(damage);
     }
 
-    public void Heal(float healAmount) {
+    public virtual void Heal(float healAmount) {
         healthMeter.Add(healAmount);
     }
 
-    public void OnReachDestination() {
+    public void ReachDestination() {
         // TODO: GameManager.Instance.TakeDamage(DamageToBase);
         Die();
     }
 
     public void Kill() {
+        OnKill.Invoke();
         CurrencyMeter.Instance.Add(currencyReward);
         Die();
     }
 
-    public void Die() {
+    public virtual void Die() {
+        OnDeath.Invoke();
         Destroy(gameObject);
+    }
+
+    protected virtual void Awake() {
+        healthMeter = GetComponent<HealthMeter>();
+        pathNavigator = GetComponent<PathNavigator>();
     }
 }

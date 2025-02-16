@@ -59,6 +59,7 @@
     "dotnet.defaultSolution": "power-td.sln",
     "cSpell.words": [
         "Buildable",
+        "Frostbane",
         "Funcs",
         "Mathf",
         "pausables",

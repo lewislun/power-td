@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class Meter : MonoBehaviour {
     [Header("Attributes")]
     [field: SerializeField] public ModifiableFloat MaxValue { get; protected set; } = new();
+    public bool IsFullOnStart = false;
 
     [Header("Information")]
     [field: SerializeField] public virtual float CurrentValue { get; protected set; } = 100f;
@@ -62,12 +63,15 @@ public class Meter : MonoBehaviour {
         OnValueChanged.Invoke(CurrentValue);
     }
 
-    private void OnValidate() {
+    protected void OnValidate() {
         MaxValue.UpdateValue();
         CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue.Value);
     }
 
-    private void Start() {
+    protected void Start() {
+        if (IsFullOnStart) {
+            CurrentValue = MaxValue.Value;
+        }
         OnValueChanged.Invoke(CurrentValue);
     }
 }
