@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Selectable))]
 public class Building : MonoBehaviour, IPausable {
@@ -13,6 +14,8 @@ public class Building : MonoBehaviour, IPausable {
     [Header("Info")]
     [field: SerializeField, ReadOnly] public BuildableTile Tile { get; private set; }
     [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
+
+    public HashSet<BuildingEffect> Effects { get; private set; } = new();
 
     public void Pause() => IsPaused = true;
     public void Unpause() => IsPaused = false;
@@ -62,4 +65,5 @@ public class Building : MonoBehaviour, IPausable {
         OnBuilt.Invoke();
         return true;
     }
+
 }

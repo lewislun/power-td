@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8920625609586345300}
   - component: {fileID: 6645743865830327512}
+  - component: {fileID: 8766409941652682146}
   m_Layer: 11
   m_Name: Frost Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8920625609586345300
 Transform:
   m_ObjectHideFlags: 0
@@ -43,6 +44,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7ef84850108145be94cc638864616de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8766409941652682146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2979721979843291478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45dfbd5934734422b6bb73f931b149a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4821218778230336685
@@ -73,7 +86,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8920625609586345300}
@@ -214,7 +227,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1300
+      scalar: 900
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2675,7 +2688,7 @@ ParticleSystem:
     inWorldSpace: 0
     multiplyDragByParticleSize: 0
     multiplyDragByParticleVelocity: 0
-    dampen: 0.9
+    dampen: 0.97
     drag:
       serializedVersion: 2
       minMaxState: 0
@@ -4123,7 +4136,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.8378372
           inSlope: -2
           outSlope: -2
           tangentMode: 0
@@ -4132,7 +4145,7 @@ ParticleSystem:
           outWeight: 0
         - serializedVersion: 3
           time: 1
-          value: 0.081077576
+          value: 0.17567444
           inSlope: -0.37842682
           outSlope: -0.37842682
           tangentMode: 0
@@ -4879,6 +4892,93 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &9216652221906780656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9018700220802302531}
+  - component: {fileID: 7673195073357986045}
+  m_Layer: 11
+  m_Name: Radius Reference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &9018700220802302531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9216652221906780656}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7593069487519564687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &7673195073357986045
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9216652221906780656}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.0627451}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &5418682849896437637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5001,11 +5101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6415417121907492585, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
       propertyPath: <MaxValue>k__BackingField.<Base>k__BackingField
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6415417121907492585, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
       propertyPath: <MaxValue>k__BackingField.<Value>k__BackingField
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6415417121907492585, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
       propertyPath: OnValueZero.m_PersistentCalls.m_Calls.Array.size
@@ -5046,6 +5146,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2473328521567671306, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8920625609586345300}
+    - targetCorrespondingSourceObject: {fileID: 2473328521567671306, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9018700220802302531}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5441725879769814380, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
       insertIndex: -1
@@ -5076,6 +5179,30 @@ MonoBehaviour:
   <OnKill>k__BackingField:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2979721979843291478}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8766409941652682146}
+        m_TargetAssemblyTypeName: DetachSelf, Assembly-CSharp
+        m_MethodName: Detach
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 3389127734393721858}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
@@ -5088,7 +5215,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Explosion: {fileID: 2979721979843291478}
+  <FreezeEffect>k__BackingField: {fileID: 6040793282520424254, guid: d3ff30acbb710454e91b1483b9e930a7, type: 3}
   <ExplosionRadius>k__BackingField:
     <Base>k__BackingField: 2
     <Min>k__BackingField: 0
@@ -5109,6 +5236,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  <FreezeDuration>k__BackingField:
+    <Base>k__BackingField: 10
+    <Min>k__BackingField: 0
+    <Max>k__BackingField: 3.4028235e+38
+    <Value>k__BackingField: 10
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &7593069487519564687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2473328521567671306, guid: dc47163df435547f3a704fa3ffe81484, type: 3}

@@ -4,13 +4,25 @@ using UnityEngine;
 [RequireComponent(typeof(PathNavigator))]
 public class Frostbane : Enemy {
 
-    public GameObject Explosion;
+    [Header("Frostbane")]
+    [field: SerializeField] public FreezeEffect FreezeEffect { get; protected set; }
     [field: SerializeField] public ModifiableFloat ExplosionRadius { get; protected set; } = new(2f);
+    [field: SerializeField] public ModifiableFloat FreezeDuration { get; protected set; } = new(10f);
 
-    public override void Die() {
-        // detaches the explosion from the enemy
-        Explosion.transform.parent = transform.parent;
-        base.Die();
+    public void Explode() {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, ExplosionRadius.Value, Vector2.zero, 10f, LayerMask.GetMask(Layer.Building));
+        foreach (RaycastHit2D hit in hits) {
+            if (hit.collider.TryGetComponent<Building>(out var building)) {
+                var freezeEffectObject = Instantiate(FreezeEffect.gameObject, building.transform);
+                var freezeEffect = freezeEffectObject.GetComponent<FreezeEffect>();
+                freezeEffect.SetDuration(FreezeDuration.Value);
+                freezeEffect.Apply(building);
+            }
+        }
+    }
+
+    protected void Start() {
+        OnKill.AddListener(Explode);
     }
 
 }

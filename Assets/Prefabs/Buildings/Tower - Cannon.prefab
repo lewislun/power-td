@@ -135,6 +135,7 @@ MonoBehaviour:
         m_CallState: 2
   <Target>k__BackingField: {fileID: 0}
   <IsFacingTarget>k__BackingField: 0
+  <IsPaused>k__BackingField: 0
 --- !u!1 &5362090320415627536
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,13 +423,38 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3864503805995809309, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644558140718061606, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991179739691057769, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4722222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991179739691057769, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4445
+      objectReference: {fileID: 0}
+    - target: {fileID: 5979504692225037911, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 6296769409633621361, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Name
       value: Tower - Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 7835017783641243822, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2526987406177461006, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7835017783641243822, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 512909581210169921, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       insertIndex: -1

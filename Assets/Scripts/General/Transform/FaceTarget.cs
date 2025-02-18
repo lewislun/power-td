@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FaceTarget : MonoBehaviour {
+public class FaceTarget : MonoBehaviour, IPausable {
 
     [Header("Attributes")]
     public float RotationDegPerSec = 360f;
@@ -15,13 +15,20 @@ public class FaceTarget : MonoBehaviour {
     [Header("Info")]
     [field: SerializeField, ReadOnly] public Transform Target { get; private set; }
     [field: SerializeField, ReadOnly] public bool IsFacingTarget { get; private set; } = false;
-    
+    [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
 
+    public void Pause() => IsPaused = true;
+    public void Unpause() => IsPaused = false;
+    
     public void SetTarget(Transform target) {
         Target = target;
     }
 
     protected void Update() {
+        if (IsPaused) {
+            return;
+        }
+
         if (Target == null) {
             if (IsFacingTarget) {
                 IsFacingTarget = false;

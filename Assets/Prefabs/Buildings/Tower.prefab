@@ -169,8 +169,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.25943398, g: 0.5769275, b: 1, a: 1}
+  m_Sprite: {fileID: -2231291127963831596, guid: 7cc4cf20c7fd940608dc38087ebaa0a8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -194,6 +194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsPassable>k__BackingField: 0
   <Cost>k__BackingField: 100
+  OnBuilt:
+    m_PersistentCalls:
+      m_Calls: []
   <Tile>k__BackingField: {fileID: 0}
   <IsPaused>k__BackingField: 0
 --- !u!61 &3717240445794630791
