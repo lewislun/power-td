@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BuildingProgressDisplay : MonoBehaviour {
@@ -29,6 +30,14 @@ public class BuildingProgressDisplay : MonoBehaviour {
         SetProgress(value / max);
     }
 
+    public void SetInverseProgress(float progress) {
+        SetProgress(1 - progress);
+    }
+
+    public void SetInverseProgress(float value, float max) {
+        SetProgress(1 - value / max);
+    }
+
     protected void Awake() {
         if (TopLineRenderer == null) {
             Debug.LogError("TopLineRenderer is not set");
@@ -57,25 +66,29 @@ public class BuildingProgressDisplay : MonoBehaviour {
     }
 
     protected void UpdateRenderers() {
+        var remainingProgress = Progress;
         if (TopLineRenderer != null) {
-            Vector3 pos0 = TopLineRenderer.GetPosition(0);
-            pos0.x = Mathf.Lerp(topMinX, topMaxX, Progress);
-            TopLineRenderer.SetPosition(0, pos0);
+            Vector3 pos0 = TopLineRenderer.GetPosition(1);
+            pos0.x = Mathf.Lerp(topMinX, topMaxX, Math.Clamp(remainingProgress, 0, 0.25f) / 0.25f);
+            TopLineRenderer.SetPosition(1, pos0);
         }
-        if (BottomLineRenderer != null) {
-            Vector3 pos0 = BottomLineRenderer.GetPosition(0);
-            pos0.x = Mathf.Lerp(bottomMinX, bottomMaxX, Progress);
-            BottomLineRenderer.SetPosition(0, pos0);
-        }
-        if (LeftLineRenderer != null) {
-            Vector3 pos0 = LeftLineRenderer.GetPosition(0);
-            pos0.y = Mathf.Lerp(leftMinY, leftMaxY, Progress);
-            LeftLineRenderer.SetPosition(0, pos0);
-        }
+        remainingProgress -= 0.25f;
         if (RightLineRenderer != null) {
-            Vector3 pos0 = RightLineRenderer.GetPosition(0);
-            pos0.y = Mathf.Lerp(rightMinY, rightMaxY, Progress);
-            RightLineRenderer.SetPosition(0, pos0);
+            Vector3 pos0 = RightLineRenderer.GetPosition(1);
+            pos0.y = Mathf.Lerp(rightMinY, rightMaxY, Math.Clamp(remainingProgress, 0, 0.25f) / 0.25f);
+            RightLineRenderer.SetPosition(1, pos0);
+        }
+        remainingProgress -= 0.25f;
+        if (BottomLineRenderer != null) {
+            Vector3 pos0 = BottomLineRenderer.GetPosition(1);
+            pos0.x = Mathf.Lerp(bottomMinX, bottomMaxX, Math.Clamp(remainingProgress, 0, 0.25f) / 0.25f);
+            BottomLineRenderer.SetPosition(1, pos0);
+        }
+        remainingProgress -= 0.25f;
+        if (LeftLineRenderer != null) {
+            Vector3 pos0 = LeftLineRenderer.GetPosition(1);
+            pos0.y = Mathf.Lerp(leftMinY, leftMaxY, Math.Clamp(remainingProgress, 0, 0.25f) / 0.25f);
+            LeftLineRenderer.SetPosition(1, pos0);
         }
     }
 }

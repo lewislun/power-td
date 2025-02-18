@@ -114,7 +114,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 898707121341100522}
         m_TargetAssemblyTypeName: BuildingProgressDisplay, Assembly-CSharp
-        m_MethodName: SetProgress
+        m_MethodName: SetInverseProgress
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

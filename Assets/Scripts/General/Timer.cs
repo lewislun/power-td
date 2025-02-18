@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,7 +29,7 @@ public class Timer : MonoBehaviour {
 
     protected void Update() {
         if (!IsDone) {
-            CurrentTime += UnityEngine.Time.deltaTime;
+            CurrentTime = Math.Clamp(CurrentTime + UnityEngine.Time.deltaTime, 0, Time);
             OnTick.Invoke(CurrentTime, Time);
             if (CurrentTime >= Time) {
                 OnDone.Invoke();
