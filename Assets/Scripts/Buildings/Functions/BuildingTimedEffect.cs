@@ -13,6 +13,12 @@ public abstract class BuildingTimedEffect : BuildingEffect {
         StartEffect();
     }
 
+    public override void Reapply(BuildingEffect otherEffect) {
+        var otherTimedEffect = (BuildingTimedEffect)otherEffect;
+        Duration = otherTimedEffect.Duration;
+        StartEffect();
+    }
+
     protected void StartEffect() {
         timer.StartTimer(Duration);
     }

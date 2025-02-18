@@ -15,13 +15,15 @@ public class Timer : MonoBehaviour {
     [field: SerializeField, ReadOnly] public float CurrentTime { get; private set; } = 0f;
     [field: SerializeField, ReadOnly] public bool IsDone { get; private set; } = true;
 
-    public void StartTimer(float Time = -1f) {
-        if (Time != -1f) {
-            this.Time = Time;
-        }
+    public void StartTimer() {
         CurrentTime = 0f;
         IsDone = false;
         OnStart.Invoke();
+    }
+
+    public void StartTimer(float Time) {
+        this.Time = Time;
+        StartTimer();
     }
 
     protected void Update() {

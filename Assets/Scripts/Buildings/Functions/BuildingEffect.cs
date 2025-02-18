@@ -11,14 +11,22 @@ public abstract class BuildingEffect : MonoBehaviour {
     [field: SerializeField, ReadOnly] public Building Building { get; private set; }
 
     public virtual void Apply(Building building) {
+        if (building.EffectByType.ContainsKey(GetType())) {
+            building.EffectByType[GetType()].Reapply(this);
+            Destroy(gameObject);
+            return;
+        }
+
         Building = building;
-        building.Effects.Add(this);
+        building.EffectByType[GetType()] = this;
         OnApply.Invoke();
     }
 
+    public abstract void Reapply(BuildingEffect otherEffect);
+
     public virtual void Remove() {
         OnRemove.Invoke();
-        Building.Effects.Remove(this);
+        Building.EffectByType.Remove(GetType());
         Destroy(gameObject);
     }
 }
