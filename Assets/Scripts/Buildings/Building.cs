@@ -53,8 +53,8 @@ public class Building : MonoBehaviour, IPausable {
             PathFinder.Instance.UpdatePaths();
             if (!PathFinder.Instance.AreDestinationsReachableFromAllSpawners()) {
                 Debug.Log("Building is blocking paths");
-                PathFinder.Instance.UpdatePaths();
                 tile.RemoveBuilding();
+                PathFinder.Instance.UpdatePaths();
                 return false;
             }
         }
