@@ -14,7 +14,7 @@ public class Meter : MonoBehaviour {
     public UnityEvent OnValueMax;
     public UnityEvent<float> OnValueChanged;
 
-    public bool HasEnough(float amount) {
+    public virtual bool HasEnough(float amount) {
         return amount <= CurrentValue;
     }
 
@@ -48,7 +48,7 @@ public class Meter : MonoBehaviour {
         return Subtract(amount);
     }
 
-    protected void AddDelta(float delta) {
+    protected virtual void AddDelta(float delta) {
         if (delta == 0) return;
 
         float previousValue = CurrentValue;

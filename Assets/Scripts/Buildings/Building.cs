@@ -18,8 +18,8 @@ public class Building : MonoBehaviour, IPausable {
 
     public Dictionary<Type, BuildingEffect> EffectByType { get; private set; } = new();
 
-    public void Pause() => IsPaused = true;
-    public void Unpause() => IsPaused = false;
+    public virtual void Pause() => IsPaused = true;
+    public virtual void Unpause() => IsPaused = false;
 
     protected virtual void Awake() {
         Pausable.Pause(gameObject);
