@@ -1,12 +1,66 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using System;
 
-public class PathNode {
+public class PathNode: ICloneable {
     public ITile Tile;
-    public int x, y;
-    public PathNode Next;
-    public PathNode Destination;
+    public int x, y, nextX, nextY, destX, destY;
+
+    public PathNode(ITile tile, int x, int y) {
+        Tile = tile;
+        this.x = x;
+        this.y = y;
+        nextX = -1;
+        nextY = -1;
+        destX = -1;
+        destY = -1;
+    }
+
+    public PathNode Next {
+        get {
+            if (nextX == -1 || nextY == -1) {
+                return null;
+            }
+            return PathFinder.Instance.Nodes[nextX, nextY];
+        }
+        set {
+            if (value == null) {
+                nextX = -1;
+                nextY = -1;
+            } else {
+                nextX = value.x;
+                nextY = value.y;
+            }
+        }
+    }
+
+    public PathNode Destination {
+        get {
+            if (destX == -1 || destY == -1) {
+                return null;
+            }
+            return PathFinder.Instance.Nodes[destX, destY];
+        }
+        set {
+            if (value == null) {
+                destX = -1;
+                destY = -1;
+            } else {
+                destX = value.x;
+                destY = value.y;
+            }
+        }
+    }
+
+    public object Clone() {
+        return new PathNode(Tile, x, y) {
+            nextX = nextX,
+            nextY = nextY,
+            destX = destX,
+            destY = destY,
+        };
+    }
 }
 
 public class PathFinder : MonoBehaviour {
@@ -19,10 +73,12 @@ public class PathFinder : MonoBehaviour {
 
     public static PathFinder Instance { get; private set; }
 
-    private PathNode[,] nodes;
+    public PathNode[,] Nodes { get; private set; }
+
     private readonly Dictionary<ITile, PathNode> nodeByTile = new();
-    private readonly List<PathNode> spawnerNodes = new();
-    private readonly List<PathNode> destinationNodes = new();
+    private readonly List<ITile> spawnerTiles = new();
+    private readonly List<ITile> destinationTiles = new();
+    private PathNode[,] NodesStash;
 
     public PathNode GetNextNode(ITile tile) {
         return nodeByTile[tile].Next;
@@ -30,8 +86,8 @@ public class PathFinder : MonoBehaviour {
 
     // Check if there is a valid path for all spawners
     public bool AreDestinationsReachableFromAllSpawners() {
-        foreach (PathNode node in spawnerNodes) {
-            if (node.Destination == null) {
+        foreach (ITile tile in spawnerTiles) {
+            if (nodeByTile[tile].Destination == null) {
                 return false;
             }
         }
@@ -52,20 +108,16 @@ public class PathFinder : MonoBehaviour {
         return path;
     }
 
-    private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-        } else {
-            Debug.LogError("Multiple PathFinder instances");
+    // Try to update paths and return true if all destinations are reachable from all spawners
+    public bool TryUpdatePaths() {
+        StashNodes();
+        UpdatePaths(false);
+        if (AreDestinationsReachableFromAllSpawners()) {
+            OnPathUpdate.Invoke();
+            return true;
         }
-        if (TileParent == null) {
-            TileParent = GameObject.Find("Tiles");
-        }
-    }
-
-    private void Start() {
-        UpdateNodes();
-        UpdatePaths();
+        RestoreNodes();
+        return false;
     }
 
     public void UpdateNodes() {
@@ -81,45 +133,39 @@ public class PathFinder : MonoBehaviour {
         float[] yArray = new float[ySet.Count];
         xSet.CopyTo(xArray);
         ySet.CopyTo(yArray);
-        System.Array.Sort(xArray);
-        System.Array.Sort(yArray);
+        Array.Sort(xArray);
+        Array.Sort(yArray);
 
-        nodes = new PathNode[xArray.Length, yArray.Length];
-        spawnerNodes.Clear();
-        destinationNodes.Clear();
+        Nodes = new PathNode[xArray.Length, yArray.Length];
+        spawnerTiles.Clear();
+        destinationTiles.Clear();
         nodeByTile.Clear();
         foreach (ITile tile in allTiles) {
-            int xIndex = System.Array.IndexOf(xArray, tile.transform.position.x);
-            int yIndex = System.Array.IndexOf(yArray, tile.transform.position.y);
-            if (nodes[xIndex, yIndex] != null) {
+            int xIndex = Array.IndexOf(xArray, tile.transform.position.x);
+            int yIndex = Array.IndexOf(yArray, tile.transform.position.y);
+            if (Nodes[xIndex, yIndex] != null) {
                 Debug.LogError("Duplicated tile at " + tile.transform.position);
                 continue;
             }
-            nodes[xIndex, yIndex] = new PathNode {
-                Tile = tile,
-                Next = null,
-                Destination = null,
-                x = xIndex,
-                y = yIndex,
-            };
-            nodeByTile[tile] = nodes[xIndex, yIndex];
+            Nodes[xIndex, yIndex] = new PathNode(tile, xIndex, yIndex);
+            nodeByTile[tile] = Nodes[xIndex, yIndex];
 
             if (tile is SpawnerTile) {
-                spawnerNodes.Add(nodes[xIndex, yIndex]);
+                spawnerTiles.Add(tile);
             } else if (tile is DestinationTile) {
-                destinationNodes.Add(nodes[xIndex, yIndex]);
-                nodes[xIndex, yIndex].Destination = nodes[xIndex, yIndex];
+                destinationTiles.Add(tile);
+                Nodes[xIndex, yIndex].Destination = Nodes[xIndex, yIndex];
             }
         }
     }
 
-    public void UpdatePaths() {
+    public void UpdatePaths(bool InvokeOnPathUpdate = true) {
         ClearPaths();
         Queue<PathNode> queue = new();
         HashSet<PathNode> visitedSet = new();
-        foreach (var node in destinationNodes) {
-            queue.Enqueue(node);
-            visitedSet.Add(node);
+        foreach (var tile in destinationTiles) {
+            queue.Enqueue(nodeByTile[tile]);
+            visitedSet.Add(nodeByTile[tile]);
         }
         
         int[][] directions = new int[][] {
@@ -140,17 +186,17 @@ public class PathFinder : MonoBehaviour {
             foreach (int[] direction in directions) {
                 int x = node.x + direction[0];
                 int y = node.y + direction[1];
-                if (x < 0 || x >= nodes.GetLength(0) || y < 0 || y >= nodes.GetLength(1)) {
+                if (x < 0 || x >= Nodes.GetLength(0) || y < 0 || y >= Nodes.GetLength(1)) {
                     continue;
                 }
                 // check corners for diagonal movement
                 if (direction[0] != 0 && direction[1] != 0) {
-                    if (nodes[x, node.y] == null || nodes[node.x, y] == null || nodes[x, node.y].Tile.IsPassable == false || nodes[node.x, y].Tile.IsPassable == false) {
+                    if (Nodes[x, node.y] == null || Nodes[node.x, y] == null || Nodes[x, node.y].Tile.IsPassable == false || Nodes[node.x, y].Tile.IsPassable == false) {
                         continue;
                     }
                 }
 
-                PathNode nextNode = nodes[x, y];
+                PathNode nextNode = Nodes[x, y];
                 if (nextNode == null || visitedSet.Contains(nextNode)) {
                     continue;
                 }
@@ -161,7 +207,25 @@ public class PathFinder : MonoBehaviour {
             }
         }
 
-        OnPathUpdate.Invoke();
+        if (InvokeOnPathUpdate) {
+            OnPathUpdate.Invoke();
+        }
+    }
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Debug.LogError("Multiple PathFinder instances");
+        }
+        if (TileParent == null) {
+            TileParent = GameObject.Find("Tiles");
+        }
+    }
+
+    private void Start() {
+        UpdateNodes();
+        UpdatePaths();
     }
 
     private void ClearPaths() {
@@ -173,5 +237,33 @@ public class PathFinder : MonoBehaviour {
         }
     }
 
-    // TODO: function to return the path to a previous state (for reverting build)
+    private void StashNodes() {
+        NodesStash = new PathNode[Nodes.GetLength(0), Nodes.GetLength(1)];
+        for (int x = 0; x < Nodes.GetLength(0); x++) {
+            for (int y = 0; y < Nodes.GetLength(1); y++) {
+                if (Nodes[x, y] == null) {
+                    continue;
+                }
+                NodesStash[x, y] = (PathNode)Nodes[x, y].Clone();
+            }
+        }
+    }
+
+    private void RestoreNodes() {
+        if (NodesStash == null) {
+            Debug.Log("NodesStash is null");
+            return;
+        }
+        nodeByTile.Clear();
+        for (int x = 0; x < NodesStash.GetLength(0); x++) {
+            for (int y = 0; y < NodesStash.GetLength(1); y++) {
+                if (NodesStash[x, y] == null) {
+                    continue;
+                }
+                Nodes[x, y] = NodesStash[x, y];
+                nodeByTile[Nodes[x, y].Tile] = Nodes[x, y];
+            }
+        }
+        NodesStash = null;
+    }
 }

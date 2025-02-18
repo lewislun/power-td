@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class SpawnerTile : MonoBehaviour, ITile {
@@ -37,9 +36,6 @@ public class SpawnerTile : MonoBehaviour, ITile {
             Debug.LogError("PathLineRenderer is null");
         }
         PathFinder.Instance.OnPathUpdate.AddListener(UpdatePathDisplay);
-    }
-
-    protected void Start(){
     }
 
     protected IEnumerator SpawnAll(SpawnInfo spawnInfo, GameObject parent) {
