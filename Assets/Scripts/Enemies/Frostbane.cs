@@ -21,7 +21,8 @@ public class Frostbane : Enemy {
         }
     }
 
-    protected void Start() {
+    protected override void Start() {
+        base.Start();
         OnKill.AddListener(Explode);
     }
 

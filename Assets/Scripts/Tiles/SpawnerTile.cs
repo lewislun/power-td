@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnerTile : MonoBehaviour, ITile {
 
     [Header("References")]
-    [field:SerializeField] public LineRenderer PathLineRenderer { get; private set; }
+    [field: SerializeField] public LineRenderer PathLineRenderer { get; private set; }
 
-    [Header("Debug")]
+    [Header("Info")]
     public bool IsSpawning => spawnRoutine != null;
 
     public bool IsPassable { get => true; }
@@ -52,7 +52,7 @@ public class SpawnerTile : MonoBehaviour, ITile {
             }
         }
         spawnRoutine = null;
-
+        LevelManager.Instance.UnregisterSpawningSpawner(this);
         Debug.Log($"Finished spawning from {spawnInfo.SpawnerTile.name}");
     }
 

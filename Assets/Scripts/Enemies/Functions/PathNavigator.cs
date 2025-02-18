@@ -48,7 +48,7 @@ public class PathNavigator : MonoBehaviour {
         PathFinder.Instance.OnPathUpdate.RemoveListener(UpdateNextTile);
     }
 
-    protected void Update() {
+    protected void FixedUpdate() {
         MoveTowardsNextTile();
     }
 
@@ -58,7 +58,7 @@ public class PathNavigator : MonoBehaviour {
         }
 
         Vector3 direction = NextPos - transform.position;
-        transform.position += Speed * Time.deltaTime * direction.normalized;
+        transform.position += Speed * Time.fixedDeltaTime * direction.normalized;
         if (Vector3.Distance(transform.position, NextPos) < 0.05f) {
             PathNode node = PathFinder.Instance.GetNextNode(NextTile);
             if (node == null) {

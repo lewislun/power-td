@@ -36,11 +36,16 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     public virtual void Die() {
         OnDeath.Invoke();
+        LevelManager.Instance.UnregisterEnemy(this);
         Destroy(gameObject);
     }
 
     protected virtual void Awake() {
         healthMeter = GetComponent<HealthMeter>();
         pathNavigator = GetComponent<PathNavigator>();
+    }
+
+    protected virtual void Start() {
+        LevelManager.Instance.RegisterEnemy(this);
     }
 }
