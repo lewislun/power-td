@@ -12,8 +12,14 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     [Header("Info")]
     [field: SerializeField] public bool IsPaused { get; private set; }
 
-    public void Pause() => IsPaused = true;
-    public void Unpause() => IsPaused = false;
+    public void Pause() {
+        IsPaused = true;
+        lineRenderer.enabled = false;
+    }
+    public void Unpause() {
+        IsPaused = false;
+        lineRenderer.enabled = true;
+    }
 
     private LineRenderer lineRenderer;
     private LayerMask laserEndHitMask;
@@ -26,9 +32,6 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     protected void Awake() {
         laserEndHitMask = LayerMask.GetMask(Layer.LaserBlocker);
         damageHitMask = LayerMask.GetMask(Layer.Enemy);
-    }
-
-    protected void Start() {
         lineRenderer = GetComponent<LineRenderer>();
     }
 
@@ -47,7 +50,10 @@ public class DirectionalLaser : MonoBehaviour, IPausable {
     }
 
     protected bool SpendEnergy() {
-        return EnergyMeter.Instance.SubtractIfEnough(EnergyPerSec * Time.deltaTime);
+        if (LevelManager.Instance.IsWaveActive) {
+            return EnergyMeter.Instance.SubtractIfEnough(EnergyPerSec * Time.deltaTime);
+        }
+        return true;
     }
 
     protected void Shoot(Vector3 laserEndPos) {

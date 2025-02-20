@@ -11,7 +11,7 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
 
     [Header("Information")]
     [field: SerializeField, ReadOnly] public float TimeSinceLastShot { get; private set; } = 0f;
-    [field: SerializeField, ReadOnly] public bool CanShoot { get; set; } = false;
+    [field: SerializeField, ReadOnly] public bool IsAlignedWithTarget { get; set; } = false;
     [field: SerializeField, ReadOnly] public Transform Target { get; private set; }
     [field: SerializeField, ReadOnly] public bool IsPaused { get; private set; }
 
@@ -22,26 +22,27 @@ public class ProjectileShooter : MonoBehaviour, IPausable {
         Target = target;
     }
 
+    public bool Shoot() {
+        if (Target == null || !IsAlignedWithTarget) {
+            return false;
+        }
+        Transform parent = LevelManager.Instance.ProjectileParent.transform;
+        Vector3 pos = new(transform.position.x, transform.position.y, parent.position.z);
+        GameObject projectileObject = Instantiate(ProjectilePrefab, pos, Quaternion.identity, parent);
+        IProjectile projectile = projectileObject.GetComponent<IProjectile>();
+        projectile.SetTarget(Target);
+        projectile.Damage = Damage;
+        return true;
+    }
+
     protected void Awake() {
         if (ProjectilePrefab == null) {
             Debug.LogError("ProjectilePrefab is not set in " + name);
         }
     }
 
-    public bool Shoot() {
-        if (Target == null || !CanShoot) {
-            return false;
-        }
-        Transform parent = LevelManager.Instance.ProjectileParent.transform;
-        Vector3 pos = new(transform.position.x, transform.position.y, parent.position.z);
-        GameObject projectile = Instantiate(ProjectilePrefab, pos, Quaternion.identity, parent);
-        projectile.GetComponent<IProjectile>().SetTarget(Target);
-        projectile.GetComponent<IProjectile>().Damage = Damage;
-        return true;
-    }
-
-    private void Update() {
-        if (IsPaused) {
+    protected void Update() {
+        if (IsPaused || !LevelManager.Instance.IsWaveActive) {
             return;
         }
 

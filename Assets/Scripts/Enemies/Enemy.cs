@@ -7,8 +7,9 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     [Header("Attributes")]
     public float DamageToBase = 1f;
-    public float currencyReward = 10f;
+    public float CurrencyReward = 10f;
 
+    [Header("Events")]
     [field: SerializeField] public UnityEvent OnDeath { get; private set; } = new();
     [field: SerializeField] public UnityEvent OnKill { get; private set; } = new();
 
@@ -28,9 +29,9 @@ public class Enemy : MonoBehaviour, IDamageable {
         Die();
     }
 
-    public void Kill() {
+    public virtual void Kill() {
         OnKill.Invoke();
-        CurrencyMeter.Instance.Add(currencyReward);
+        CurrencyMeter.Instance.Add(CurrencyReward);
         Die();
     }
 

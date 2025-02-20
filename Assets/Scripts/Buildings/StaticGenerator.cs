@@ -11,7 +11,7 @@ public class StaticGenerator : MonoBehaviour, IPausable {
     public void Unpause() => IsPaused = false;
 
     private void Update() {
-        if (IsPaused) {
+        if (IsPaused || !LevelManager.Instance.IsWaveActive) {
             return;
         }
         EnergyMeter.Instance.Add(EnergyPerSec * Time.deltaTime);

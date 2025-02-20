@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717240445794630791, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 5.12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3717240445794630791, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 5.12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6296769409633621361, guid: 5bed65184e2a749ccab9e6aaa7cf326d, type: 3}
       propertyPath: m_Name
@@ -110,7 +110,7 @@ MonoBehaviour:
   <Tile>k__BackingField: {fileID: 0}
   <IsPaused>k__BackingField: 0
   <EnergyCapacity>k__BackingField:
-    <Base>k__BackingField: 1000
+    <Base>k__BackingField: 50
     <Min>k__BackingField: 0
     <Max>k__BackingField: 3.4028235e+38
     <Value>k__BackingField: 1000

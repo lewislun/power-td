@@ -37,8 +37,9 @@ public class Battery : Building {
         EnergyCapacity.OnValueChanged.AddListener(UpdateCapacity);
     }
 
-    protected void OnDestroy() {
+    protected override void OnDestroy() {
         RemoveCapacity();
+        base.OnDestroy();
     }
 
     protected void UpdateCapacity(float newValue) {

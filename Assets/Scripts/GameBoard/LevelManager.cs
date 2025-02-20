@@ -34,8 +34,8 @@ public class LevelManager : MonoBehaviour {
     public List<Wave> Waves = new();
 
     [Header("Events")]
-    [field: SerializeField] public UnityEvent<int> OnWaveStart { get; private set; } = new();
-    [field: SerializeField] public UnityEvent<int> OnWaveEnd { get; private set; } = new();
+    [field: SerializeField] public UnityEvent OnWaveStart { get; private set; } = new();
+    [field: SerializeField] public UnityEvent OnWaveEnd { get; private set; } = new();
 
     [Header("Info")]
     [field: SerializeField] public bool IsWaveActive { get; private set; } = false;
@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour {
 
     public void StartWave(Wave wave) {
         IsWaveActive = true;
-        OnWaveStart.Invoke(CurrentWaveIndex);
+        OnWaveStart.Invoke();
         // Register all spawners first to avoid invoking OnWaveEnd before all spawners are done spawning
         foreach (var spawnInfo in wave.SpawnInfos) {
             if (spawnInfo.SpawnerTile == null) {
@@ -99,7 +99,7 @@ public class LevelManager : MonoBehaviour {
     private void CheckWaveEnd() {
         if (IsWaveActive && CurrentEnemySet.Count == 0 && CurrentSpawningSpawnerSet.Count == 0) {
             IsWaveActive = false;
-            OnWaveEnd.Invoke(CurrentWaveIndex);
+            OnWaveEnd.Invoke();
         }
     }
 

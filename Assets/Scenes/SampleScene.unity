@@ -1788,10 +1788,6 @@ MonoBehaviour:
         Count: 30
         SecBeforeSpawns: 0
         SecBetweenSpawns: 0.3
-      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
-        Count: 2000
-        SecBeforeSpawns: 0
-        SecBetweenSpawns: 0.3
       SecBeforeStart: 0
     - SpawnerTile: {fileID: 589546229}
       Batches:
@@ -1800,7 +1796,29 @@ MonoBehaviour:
         SecBeforeSpawns: 0
         SecBetweenSpawns: 1
       SecBeforeStart: 2
-  - SpawnInfos: []
+  - SpawnInfos:
+    - SpawnerTile: {fileID: 1990679642}
+      Batches:
+      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
+        Count: 2000
+        SecBeforeSpawns: 0
+        SecBetweenSpawns: 0.5
+      SecBeforeStart: 0
+    - SpawnerTile: {fileID: 589546229}
+      Batches:
+      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
+        Count: 2000
+        SecBeforeSpawns: 0
+        SecBetweenSpawns: 0.5
+      SecBeforeStart: 0
+  - SpawnInfos:
+    - SpawnerTile: {fileID: 1990679642}
+      Batches:
+      - Prefab: {fileID: 3217205512743193974, guid: 689545ab529314530aa15fb2e65850c8, type: 3}
+        Count: 2000
+        SecBeforeSpawns: 0
+        SecBetweenSpawns: 0.5
+      SecBeforeStart: 0
   <OnWaveStart>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -1832,7 +1850,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   <IsWaveActive>k__BackingField: 0
-  <CurrentWaveIndex>k__BackingField: 0
+  <CurrentWaveIndex>k__BackingField: -1
 --- !u!114 &482525076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1862,10 +1880,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxValue>k__BackingField:
-    <Base>k__BackingField: 100
+    <Base>k__BackingField: 10
     <Min>k__BackingField: 0
     <Max>k__BackingField: 999999
-    <Value>k__BackingField: 100
+    <Value>k__BackingField: 10
     OnValueChanged:
       m_PersistentCalls:
         m_Calls: []

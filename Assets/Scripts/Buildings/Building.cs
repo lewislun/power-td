@@ -21,8 +21,12 @@ public class Building : MonoBehaviour, IPausable {
     public virtual void Pause() => IsPaused = true;
     public virtual void Unpause() => IsPaused = false;
 
-    protected virtual void Awake() {
+    public void PauseAllFunctions() {
         Pausable.Pause(gameObject);
+    }
+
+    public void UnpauseAllFunctions() {
+        Pausable.Unpause(gameObject);
     }
 
     public bool IsBuildableAt(BuildableTile tile) {
@@ -65,4 +69,17 @@ public class Building : MonoBehaviour, IPausable {
         return true;
     }
 
+    protected virtual void Start() {
+        Pausable.Pause(gameObject);
+        LevelManager.Instance.OnWaveStart.AddListener(UnpauseAllFunctions);
+        LevelManager.Instance.OnWaveEnd.AddListener(PauseAllFunctions);
+    }
+
+    protected virtual void OnDestroy() {
+        if (Tile != null) {
+            Tile.RemoveBuilding();
+        }
+        LevelManager.Instance.OnWaveStart.RemoveListener(UnpauseAllFunctions);
+        LevelManager.Instance.OnWaveEnd.RemoveListener(PauseAllFunctions);
+    }
 }

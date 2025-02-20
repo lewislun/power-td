@@ -108,7 +108,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5489357279151395985}
         m_TargetAssemblyTypeName: ProjectileShooter, Assembly-CSharp
-        m_MethodName: set_CanShoot
+        m_MethodName: set_IsAlignedWithTarget
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5489357279151395985}
         m_TargetAssemblyTypeName: ProjectileShooter, Assembly-CSharp
-        m_MethodName: set_CanShoot
+        m_MethodName: set_IsAlignedWithTarget
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
   <ProjectilePerSec>k__BackingField: 1
   <Damage>k__BackingField: 75
   <TimeSinceLastShot>k__BackingField: 0
-  <CanShoot>k__BackingField: 0
+  <IsAlignedWithTarget>k__BackingField: 0
   <Target>k__BackingField: {fileID: 0}
   <IsPaused>k__BackingField: 0
 --- !u!1 &8869034302084741742

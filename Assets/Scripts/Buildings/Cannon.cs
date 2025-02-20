@@ -6,11 +6,12 @@ public class Cannon : Building {
     [field: SerializeField] public ModifiableFloat Damage { get; protected set; } = new(75f);
     [field: SerializeField] public ModifiableFloat ProjectilePerSec { get; protected set; } = new(1f);
 
-    protected void Start() {
+    protected override void Start() {
         // initialize values
         Radius.OnValueChanged.Invoke(Radius.Value);
         Damage.OnValueChanged.Invoke(Damage.Value);
         ProjectilePerSec.OnValueChanged.Invoke(ProjectilePerSec.Value);
+        base.Start();
     }
 
 }
