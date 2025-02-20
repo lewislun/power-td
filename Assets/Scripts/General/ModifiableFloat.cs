@@ -76,6 +76,11 @@ public class ModifiableFloat {
         UpdateValue();
     }
 
+    public void RemoveAllAdditiveModifiers() {
+        AdditiveModifiers.Clear();
+        UpdateValue();
+    }
+
     public bool EditModifier(int id, float modifier) {
         if (AdditiveModifiers.ContainsKey(id)) {
             AdditiveModifiers[id] = modifier;

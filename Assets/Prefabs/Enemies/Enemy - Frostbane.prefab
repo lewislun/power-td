@@ -5096,6 +5096,10 @@ PrefabInstance:
       value: Enemy - Frostbane
       objectReference: {fileID: 0}
     - target: {fileID: 6415417121907492585, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
+      propertyPath: IsFullOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415417121907492585, guid: dc47163df435547f3a704fa3ffe81484, type: 3}
       propertyPath: <CurrentValue>k__BackingField
       value: 1
       objectReference: {fileID: 0}
@@ -5172,7 +5176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToBase: 1
-  currencyReward: 10
+  CurrencyReward: 10
   <OnDeath>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -5237,7 +5241,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   <FreezeDuration>k__BackingField:
-    <Base>k__BackingField: 10
+    <Base>k__BackingField: 20
     <Min>k__BackingField: 0
     <Max>k__BackingField: 3.4028235e+38
     <Value>k__BackingField: 10

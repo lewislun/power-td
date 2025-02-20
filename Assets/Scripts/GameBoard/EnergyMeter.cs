@@ -24,6 +24,12 @@ public class EnergyMeter : Meter {
         return amount <= CurrentValue - FrozenEnergy.Value;
     }
 
+    public void ResetEnergy() {
+        FrozenEnergy.RemoveAllAdditiveModifiers();
+        FrozenCapacity.RemoveAllAdditiveModifiers();
+        CurrentValue = 0;
+    }
+
     protected override void AddDelta(float delta) {
         if (delta == 0) return;
 
@@ -45,5 +51,10 @@ public class EnergyMeter : Meter {
         } else {
             Debug.LogError("Multiple EnergyMeter instances");
         }
+    }
+
+    protected override void Start() {
+        base.Start();
+        LevelManager.Instance.OnWaveStart.AddListener(ResetEnergy);
     }
 }

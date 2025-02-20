@@ -1784,10 +1784,6 @@ MonoBehaviour:
         Count: 10
         SecBeforeSpawns: 1
         SecBetweenSpawns: 5
-      - Prefab: {fileID: 51760113826841321, guid: f37a5ff6391bb49eea8ad3c67275b1d9, type: 3}
-        Count: 30
-        SecBeforeSpawns: 0
-        SecBetweenSpawns: 0.3
       SecBeforeStart: 0
     - SpawnerTile: {fileID: 589546229}
       Batches:

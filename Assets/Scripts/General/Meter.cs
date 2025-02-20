@@ -68,7 +68,7 @@ public class Meter : MonoBehaviour {
         CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue.Value);
     }
 
-    protected void Start() {
+    protected virtual void Start() {
         if (IsFullOnStart) {
             CurrentValue = MaxValue.Value;
         }
